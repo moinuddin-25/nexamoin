@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoinUddin · Web Design Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --bg:       #070709;
+  --bg-alt:   #0d0d11;
+  --bg-card:  #111116;
+  --border:   rgba(255,255,255,0.07);
+  --border-hi:rgba(255,255,255,0.13);
+  --white:    #f5f5f7;
+  --dim:      rgba(245,245,247,0.42);
+  --dim2:     rgba(245,245,247,0.62);
+  --accent:   #6c63ff;
+  --accent-b: #867eff;
+  --glow:     rgba(108,99,255,0.22);
+  --glow-s:   rgba(108,99,255,0.10);
+  --green:    #34d399;
+  --r-sm:     12px;
+  --r-md:     18px;
+  --r-lg:     26px;
+  --r-xl:     36px;
+  --nav-h:    68px;
+  --ease:     cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: #fff; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; border: none; cursor: pointer; }
+
+/* ═══════════════════════════════════════
+   CURSOR
+═══════════════════════════════════════ */
+.cur-dot, .cur-ring {
+  position: fixed; top: 0; left: 0;
+  border-radius: 50%; pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+.cur-dot {
+  width: 7px; height: 7px;
+  background: var(--accent);
+  transition: width .25s var(--ease), height .25s var(--ease), background .25s;
+}
+.cur-ring {
+  width: 38px; height: 38px;
+  border: 1.5px solid rgba(108,99,255,.45);
+  transition: width .3s var(--ease), height .3s var(--ease), border-color .3s, transform .12s;
+}
+.cur-dot.big { width: 5px; height: 5px; }
+.cur-ring.big { width: 52px; height: 52px; border-color: var(--accent); }
+
+/* ═══════════════════════════════════════
+   GRAIN OVERLAY
+═══════════════════════════════════════ */
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 900;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.028'/%3E%3C/svg%3E");
+  opacity: .5;
+}
+
+/* ═══════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════ */
+#nav {
+  position: fixed; top: 0; inset-inline: 0;
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  padding: 0 clamp(24px, 5vw, 80px);
+  z-index: 600;
+  transition: background .35s, border-color .35s;
+  border-bottom: 1px solid transparent;
+}
+#nav.stuck {
+  background: rgba(7,7,9,.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-color: var(--border);
+}
+.nav-logo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -.03em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  position: relative;
+  transition: all .3s var(--ease);
+}
+.nav-logo:hover {
+  opacity: 1;
+}
+
+/* Logo Mark - Animated Geometric */
+.logo-mark {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+ 
+.mark-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  animation: logoPulse 2.8s ease-in-out infinite;
+}
+ 
+.mark-line {
+  position: absolute;
+  width: 14px;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 1px;
+  transform: rotate(45deg);
+  animation: logoRotate 4s linear infinite;
+}
+ 
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+ 
+@keyframes logoRotate {
+  0% { transform: rotate(45deg); }
+  100% { transform: rotate(405deg); }
+}
+ 
+/* Logo Name */
+.logo-name {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--dim2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all .3s var(--ease);
+}
+ 
+.logo-accent {
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent-b) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -.02em;
+}
+ 
+#nav.stuck .logo-mark {
+  animation: none;
+}
+ 
+#nav.stuck .mark-dot {
+  animation: none;
+  transform: scale(1);
+}
+ 
+#nav.stuck .mark-line {
+  animation: none;
+}
+
+
+
+.logo-pip {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+.nav-links {
+  display: flex; align-items: center;
+  gap: 36px; list-style: none;
+  margin: 0 auto;
+}
+.nav-links a {
+  font-size: .8rem; font-weight: 400;
+  color: var(--dim2); letter-spacing: .01em;
+  position: relative;
+  transition: color .2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width .3s var(--ease);
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-pill {
+  background: var(--accent);
+  color: #fff !important; font-weight: 500 !important;
+  padding: 9px 20px; border-radius: 100px;
+  font-size: .8rem !important;
+  transition: background .2s, box-shadow .2s, transform .2s;
+  flex-shrink: 0;
+}
+.nav-pill:hover {
+  background: var(--accent-b);
+  box-shadow: 0 6px 24px var(--glow);
+  transform: translateY(-1px);
+}
+.nav-pill::after { display: none !important; }
+
+/* Hamburger */
+.ham {
+  display: none; flex-direction: column; gap: 5px;
+  padding: 6px; cursor: pointer; margin-left: auto;
+}
+.ham span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--white);
+  transition: transform .3s var(--ease), opacity .2s;
+  transform-origin: center;
+}
+.ham.x span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.ham.x span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.ham.x span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile overlay */
+.mob-overlay {
+  position: fixed; inset: 0;
+  background: rgba(7,7,9,.97);
+  backdrop-filter: blur(32px);
+  z-index: 580; display: flex;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s var(--ease);
+}
+.mob-overlay.open { opacity: 1; pointer-events: all; }
+.mob-overlay a {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 700; color: var(--dim2);
+  padding: 10px 0;
+  transition: color .2s, transform .2s;
+  transform: translateY(0);
+}
+.mob-overlay a:hover { color: var(--white); transform: translateX(8px); }
+.mob-contact-pill {
+  margin-top: 20px;
+  background: var(--accent);
+  color: #fff; font-weight: 500;
+  padding: 14px 40px; border-radius: 100px;
+  font-size: 1rem;
+  transition: background .2s;
+}
+.mob-contact-pill:hover { background: var(--accent-b); color: #fff; }
+
+/* ═══════════════════════════════════════
+   SHARED HELPERS
+═══════════════════════════════════════ */
+.wrap { padding-inline: clamp(24px, 5vw, 80px); }
+section { padding-block: clamp(80px, 10vw, 140px); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: .72rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .14em;
+  color: var(--accent-b); margin-bottom: 18px;
+}
+.eyebrow::before {
+  content: ''; width: 20px; height: 1px;
+  background: var(--accent);
+}
+
+.headline {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  line-height: .97; letter-spacing: -.04em;
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+}
+.subline {
+  font-size: clamp(.95rem, 1.3vw, 1.1rem);
+  color: var(--dim); line-height: 1.8; max-width: 500px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 15px 32px; border-radius: 100px;
+  font-size: .88rem; font-weight: 500;
+  transition: transform .25s var(--ease), box-shadow .25s, background .2s;
+  cursor: pointer;
+}
+.btn-accent {
+  background: var(--accent); color: #fff;
+}
+.btn-accent:hover {
+  background: var(--accent-b);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px var(--glow);
+}
+.btn-ghost {
+  color: var(--dim2);
+  border: 1px solid var(--border-hi);
+}
+.btn-ghost:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,.28);
+  transform: translateY(-2px);
+}
+.btn-icon { font-size: 1rem; line-height: 1; }
+
+/* Reveal */
+.rv {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.rv.in { opacity: 1; transform: translateY(0); }
+.rv-d1 { transition-delay: .08s; }
+.rv-d2 { transition-delay: .16s; }
+.rv-d3 { transition-delay: .24s; }
+.rv-d4 { transition-delay: .32s; }
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+#hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding-block: 120px 80px;
+  position: relative; overflow: hidden;
+}
+/* Orb lighting */
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.orb-1 {
+  width: clamp(300px, 55vw, 700px);
+  height: clamp(300px, 55vw, 700px);
+  background: radial-gradient(circle, rgba(108,99,255,.18) 0%, transparent 70%);
+  top: -10%; right: -10%;
+  animation: orbFloat 8s ease-in-out infinite alternate;
+}
+.orb-2 {
+  width: clamp(200px, 35vw, 500px);
+  height: clamp(200px, 35vw, 500px);
+  background: radial-gradient(circle, rgba(167,139,250,.09) 0%, transparent 70%);
+  bottom: 5%; left: -8%;
+  animation: orbFloat 10s ease-in-out infinite alternate-reverse;
+}
+@keyframes orbFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(2%, 3%) scale(1.06); }
+}
+
+/* Grid dots */
+.hero-dots {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, black 30%, transparent 100%);
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1100px; width: 100%;
+  padding-inline: clamp(24px, 5vw, 80px);
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px; border-radius: 100px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-hi);
+  font-size: .75rem; color: var(--dim2);
+  margin-bottom: 36px;
+  animation: heroFade .9s var(--ease) both;
+}
+.badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: blink 2.2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .55; transform: scale(1.35); }
+}
+
+.hero-h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.2rem, 8.5vw, 8rem);
+  line-height: .92; letter-spacing: -.05em;
+  margin-bottom: 30px;
+  animation: heroFade .9s .08s var(--ease) both;
+}
+.hero-h1 .grad {
+  background: linear-gradient(130deg, var(--accent-b) 10%, #c084fc 90%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-p {
+  font-size: clamp(.95rem, 1.4vw, 1.15rem);
+  color: var(--dim); max-width: 480px; line-height: 1.78;
+  margin-bottom: 44px;
+  animation: heroFade .9s .16s var(--ease) both;
+}
+
+.hero-btns {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  animation: heroFade .9s .24s var(--ease) both;
+}
+
+/* Avatar cluster */
+.hero-social-proof {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  animation: heroFade .9s .34s var(--ease) both;
+}
+.avatars { display: flex; }
+.avatars span {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem; font-weight: 700;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+.avatars span:not(:first-child) { margin-left: -10px; }
+.av1 { background: #3730a3; }
+.av2 { background: #065f46; }
+.av3 { background: #92400e; }
+.av4 { background: #701a75; }
+.proof-text { font-size: .82rem; color: var(--dim); line-height: 1.5; }
+.proof-text strong { color: var(--white); }
+.proof-stars { color: #fbbf24; font-size: .8rem; letter-spacing: 1px; }
+
+/* Stats strip */
+.hero-stats {
+  display: flex; gap: clamp(28px, 5vw, 72px);
+  flex-wrap: wrap; margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  animation: heroFade .9s .4s var(--ease) both;
+}
+.stat-n {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800; letter-spacing: -.04em;
+  line-height: 1;
+}
+.stat-l { font-size: .72rem; color: var(--dim); margin-top: 5px; text-transform: uppercase; letter-spacing: .1em; }
+
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll nudge */
+.scroll-nudge {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: .65rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--dim); z-index: 2;
+  animation: heroFade .9s .55s var(--ease) both;
+}
+.scroll-line {
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollAnim 2.2s ease-in-out infinite;
+}
+@keyframes scrollAnim {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  49%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  50%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ═══════════════════════════════════════
+   MARQUEE TRUST BAR
+═══════════════════════════════════════ */
+.marquee-wrap {
+  border-block: 1px solid var(--border);
+  background: var(--bg-alt);
+  overflow: hidden; padding-block: 20px;
+  position: relative;
+}
+.marquee-wrap::before,
+.marquee-wrap::after {
+  content: ''; position: absolute;
+  top: 0; bottom: 0; width: 120px; z-index: 2;
+  pointer-events: none;
+}
+.marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg-alt), transparent); }
+.marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg-alt), transparent); }
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marqueeScroll 28s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 40px;
+  font-size: .78rem; font-weight: 500;
+  color: var(--dim); white-space: nowrap;
+  letter-spacing: .02em;
+}
+.marquee-item svg { opacity: .45; flex-shrink: 0; }
+.marquee-sep {
+  color: var(--border-hi); padding: 0; font-size: 1.2rem;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════ */
+#about { background: var(--bg); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(40px, 7vw, 100px);
+  align-items: center;
+  max-width: 1200px; margin: 0 auto;
+}
+.about-photo-col {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 80px;
+}
+.about-frame {
+  aspect-ratio: 4/5;
+  border-radius: var(--r-xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+}
+.about-frame-inner {
+  position: sticky;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.ab-init {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.ab-init img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.about-frame::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(108,99,255,.12) 0%, transparent 55%);
+}
+
+.exp-badge {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(50%);
+  background: var(--accent);
+  border-radius: var(--r-md);
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: 0 20px 60px var(--glow);
+  white-space: nowrap;
+}
+.exp-n {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 2.4rem; font-weight: 800;
+  line-height: 1; letter-spacing: -.05em;
+}
+.exp-l { font-size: .72rem; opacity: .85; margin-top: 3px; }
+
+.about-text .headline { margin-bottom: 22px; }
+.about-text p { color: var(--dim); font-size: .97rem; line-height: 1.82; margin-bottom: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+.chip {
+  padding: 7px 16px;
+  border-radius: 100px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-hi);
+  font-size: .78rem; color: var(--dim2);
+  transition: background .2s, border-color .2s, color .2s;
+}
+.chip:hover {
+  background: var(--glow-s);
+  border-color: rgba(108,99,255,.35);
+  color: var(--white);
+}
+
+/* ═══════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════ */
+#services { background: var(--bg-alt); }
+.section-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 28px;
+  margin-bottom: 56px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.svc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 36px 32px;
+  position: relative; overflow: hidden;
+  transition: border-color .3s, transform .35s var(--ease);
+}
+.svc-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.svc-card:hover { border-color: var(--border-hi); transform: translateY(-5px); }
+.svc-card:hover::before { opacity: 1; }
+
+.svc-ico {
+  width: 50px; height: 50px;
+  border-radius: var(--r-sm);
+  background: var(--glow-s);
+  border: 1px solid rgba(108,99,255,.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 24px;
+  transition: background .3s;
+}
+.svc-card:hover .svc-ico { background: rgba(108,99,255,.18); }
+.svc-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.08rem; font-weight: 700;
+  letter-spacing: -.02em; margin-bottom: 10px;
+}
+.svc-desc { color: var(--dim); font-size: .86rem; line-height: 1.72; margin-bottom: 22px; }
+.svc-price {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  letter-spacing: -.04em; color: var(--accent-b);
+}
+.svc-price sub { font-size: .75rem; font-weight: 400; color: var(--dim); font-family: 'DM Sans', sans-serif; vertical-align: baseline; }
+
+/* ═══════════════════════════════════════
+   PROJECTS
+═══════════════════════════════════════ */
+#projects { background: var(--bg); }
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+.pc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  transition: border-color .3s, transform .4s var(--ease);
+}
+.pc:hover { border-color: var(--border-hi); transform: translateY(-6px); }
+.pc.l { grid-column: span 7; }
+.pc.s { grid-column: span 5; }
+
+.pc-vis {
+  position: relative; overflow: hidden;
+  background: var(--bg-alt);
+}
+.pc.l .pc-vis { aspect-ratio: 16/11; }
+.pc.s .pc-vis { aspect-ratio: 4/3; }
+
+/* Richer mock UI */
+.mock {
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  justify-content: center; padding: 24px;
+}
+.mock-bg-1 { background: linear-gradient(145deg, #0e0b1e 0%, #1a0f3e 45%, #110a28 100%); }
+.mock-bg-2 { background: linear-gradient(145deg, #0d1a0f 0%, #0a2e14 45%, #071a0a 100%); }
+.mock-bg-3 { background: linear-gradient(145deg, #1a0d07 0%, #2d1407 45%, #1a0a03 100%); }
+.mock-bg-4 { background: linear-gradient(145deg, #0a0d1f 0%, #12183a 45%, #0a0f28 100%); }
+
+.browser {
+  width: 90%;
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
+}
+.browser-bar {
+  background: rgba(255,255,255,.04);
+  padding: 9px 14px;
+  display: flex; align-items: center; gap: 6px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.b-dot { width: 7px; height: 7px; border-radius: 50%; }
+.b-url {
+  margin-left: 8px; flex: 1;
+  background: rgba(255,255,255,.06);
+  border-radius: 4px;
+  height: 14px; max-width: 160px;
+}
+.browser-body { padding: 18px 16px; }
+.b-hero {
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+.b-h1 { height: 8px; border-radius: 4px; width: 70%; margin-bottom: 6px; }
+.b-h2 { height: 5px; border-radius: 3px; width: 50%; margin-bottom: 10px; opacity: .6; }
+.b-btn { height: 18px; width: 80px; border-radius: 100px; }
+.b-cards { display: flex; gap: 8px; margin-top: 12px; }
+.b-card { flex: 1; border-radius: 6px; height: 36px; background: rgba(255,255,255,.06); }
+.b-nav {
+  display: flex; gap: 5px; margin-bottom: 12px;
+}
+.b-nav span { height: 4px; border-radius: 2px; background: rgba(255,255,255,.15); }
+/* Project 1 — purple restaurant */
+.p1 .b-hero { background: rgba(108,99,255,.15); border: 1px solid rgba(108,99,255,.2); }
+.p1 .b-h1 { background: rgba(108,99,255,.7); }
+.p1 .b-h2 { background: rgba(255,255,255,.25); }
+.p1 .b-btn { background: var(--accent); }
+/* Project 2 — green bakery */
+.p2 .b-hero { background: rgba(52,211,99,.1); border: 1px solid rgba(52,211,99,.18); }
+.p2 .b-h1 { background: rgba(52,211,99,.7); }
+.p2 .b-h2 { background: rgba(255,255,255,.25); }
+.p2 .b-btn { background: #059669; }
+/* Project 3 — orange food */
+.p3 .b-hero { background: rgba(251,146,60,.1); border: 1px solid rgba(251,146,60,.18); }
+.p3 .b-h1 { background: rgba(251,146,60,.7); }
+.p3 .b-h2 { background: rgba(255,255,255,.25); }
+.p3 .b-btn { background: #ea580c; }
+/* Project 4 — blue boutique */
+.p4 .b-hero { background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.18); }
+.p4 .b-h1 { background: rgba(56,189,248,.7); }
+.p4 .b-h2 { background: rgba(255,255,255,.25); }
+.p4 .b-btn { background: #0284c7; }
+
+/* Hover overlay */
+.pc-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 55%);
+  opacity: 0; transition: opacity .3s;
+  display: flex; align-items: flex-end;
+  padding: 20px;
+}
+.pc:hover .pc-overlay { opacity: 1; }
+.pc-arrow {
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,.95);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #000; font-size: .95rem;
+  margin-left: auto;
+  transform: scale(.8) rotate(-30deg);
+  transition: transform .3s var(--ease);
+}
+.pc:hover .pc-arrow { transform: scale(1) rotate(0deg); }
+
+.pc-info { padding: 24px 28px; }
+.pc-tag { font-size: .7rem; font-weight: 500; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-b); margin-bottom: 7px; }
+.pc-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.1rem; font-weight: 700;
+  letter-spacing: -.02em; margin-bottom: 6px;
+}
+.pc-desc { color: var(--dim); font-size: .82rem; }
+
+/* ═══════════════════════════════════════
+   WHY ME
+═══════════════════════════════════════ */
+#why { background: var(--bg-alt); }
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 100px);
+  align-items: start;
+  max-width: 1200px; margin: 0 auto;
+}
+.why-reasons { display: flex; flex-direction: column; }
+.reason {
+  display: flex; gap: 20px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+}
+.reason:first-child { padding-top: 0; }
+.reason-n {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: .7rem; font-weight: 700;
+  color: var(--accent-b); letter-spacing: .06em;
+  padding-top: 3px; min-width: 26px; flex-shrink: 0;
+}
+.reason h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: .98rem; font-weight: 700;
+  margin-bottom: 7px; letter-spacing: -.01em;
+}
+.reason p { color: var(--dim); font-size: .86rem; line-height: 1.72; }
+
+/* Glass widgets */
+.why-widgets { display: flex; flex-direction: column; gap: 18px; }
+.wg {
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-lg);
+  padding: 28px 30px;
+  position: relative; overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+.wg::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(108,99,255,.06), transparent 60%);
+  pointer-events: none;
+}
+.wg-label {
+  font-size: .68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--dim); margin-bottom: 18px;
+}
+/* Rating widget */
+.rat-row { display: flex; align-items: center; gap: 14px; }
+.rat-num {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 3rem; font-weight: 800;
+  line-height: 1; letter-spacing: -.05em;
+}
+.rat-stars { color: #fbbf24; font-size: .85rem; letter-spacing: 2px; }
+.rat-sub { font-size: .75rem; color: var(--dim); margin-top: 2px; }
+.bars { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.bar-row {
+  display: flex; align-items: center;
+  gap: 10px; font-size: .74rem; color: var(--dim);
+}
+.bar-bg {
+  flex: 1; height: 4px; background: var(--border-hi);
+  border-radius: 2px; overflow: hidden;
+}
+.bar-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 2px;
+  transition: width 1.4s var(--ease);
+}
+.bar-lbl { width: 58px; text-align: right; }
+.bar-val { width: 28px; text-align: right; }
+
+/* Tech widget */
+.tech-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Live badge widget */
+.wg-live {
+  background: linear-gradient(135deg, rgba(108,99,255,.14), rgba(108,99,255,.06));
+  border-color: rgba(108,99,255,.25);
+}
+.live-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: blink 2s infinite;
+}
+.live-txt { font-size: .83rem; font-weight: 500; }
+.wg-live p { color: var(--dim); font-size: .82rem; line-height: 1.65; }
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════ */
+#testimonials { background: var(--bg); overflow: hidden; }
+.testi-scroll {
+  display: flex; gap: 20px;
+  overflow-x: auto; padding-bottom: 6px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  margin-top: 52px;
+}
+.testi-scroll::-webkit-scrollbar { display: none; }
+.testi-scroll:active { cursor: grabbing; }
+.tc {
+  min-width: 370px; max-width: 370px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 34px; flex-shrink: 0;
+  transition: border-color .3s;
+}
+.tc:hover { border-color: var(--border-hi); }
+.tc-stars { color: #fbbf24; font-size: .85rem; letter-spacing: 2px; margin-bottom: 18px; }
+.tc-quote {
+  font-size: .93rem; color: var(--dim2);
+  line-height: 1.78; margin-bottom: 26px;
+  font-style: italic;
+}
+.tc-author { display: flex; align-items: center; gap: 12px; }
+.tc-av {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--glow-s);
+  border: 1px solid rgba(108,99,255,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700; font-size: .82rem; color: var(--accent-b);
+  flex-shrink: 0;
+}
+.tc-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: .88rem; font-weight: 700; letter-spacing: -.01em;
+}
+.tc-role { font-size: .73rem; color: var(--dim); }
+
+/* ═══════════════════════════════════════
+   PROCESS
+═══════════════════════════════════════ */
+#process { background: var(--bg-alt); }
+.process-title-area {
+  text-align: center; max-width: 600px;
+  margin: 0 auto 64px;
+}
+.process-title-area .subline { margin: 0 auto; text-align: center; }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; position: relative;
+}
+.steps::before {
+  content: ''; position: absolute;
+  top: 38px; left: calc(12.5% + 10px); right: calc(12.5% + 10px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-hi), var(--border-hi), transparent);
+}
+.step {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 32px 28px;
+  transition: border-color .3s, transform .35s var(--ease);
+}
+.step:hover { border-color: var(--border-hi); transform: translateY(-4px); }
+.step-num {
+  width: 54px; height: 54px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px; position: relative;
+}
+.step-num span {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--accent-b); letter-spacing: -.04em;
+}
+.step h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  letter-spacing: -.02em; margin-bottom: 10px;
+}
+.step p { color: var(--dim); font-size: .84rem; line-height: 1.72; }
+
+/* ═══════════════════════════════════════
+   CTA BAND
+═══════════════════════════════════════ */
+#cta-band {
+  background: var(--bg);
+  padding-block: clamp(80px, 10vw, 130px);
+}
+.cta-inner {
+  max-width: 860px; margin: 0 auto;
+  text-align: center;
+  padding-inline: clamp(24px, 5vw, 80px);
+  position: relative;
+}
+.cta-orb {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(108,99,255,.12) 0%, transparent 70%);
+  filter: blur(60px); pointer-events: none;
+}
+.cta-inner .headline { font-size: clamp(2.8rem, 6vw, 5.5rem); margin-bottom: 22px; }
+.cta-inner p { color: var(--dim); font-size: 1.05rem; line-height: 1.75; margin-bottom: 44px; max-width: 520px; margin-inline: auto; margin-bottom: 44px; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.wa-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: #25d366; color: #fff;
+  padding: 15px 30px; border-radius: 100px;
+  font-size: .88rem; font-weight: 500;
+  transition: background .2s, transform .25s var(--ease), box-shadow .25s;
+}
+.wa-btn:hover {
+  background: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(37,211,102,.28);
+}
+
+/* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+#contact { background: var(--bg-alt); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+  max-width: 1200px; margin: 0 auto;
+}
+.contact-info .headline { font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 20px; }
+.contact-info p { color: var(--dim); font-size: .95rem; line-height: 1.82; margin-bottom: 32px; }
+.contact-details { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+.cd-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: .88rem; color: var(--dim2);
+}
+.cd-ico {
+  width: 36px; height: 36px;
+  background: var(--glow-s);
+  border: 1px solid rgba(108,99,255,.2);
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: .9rem;
+}
+
+.cform {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: clamp(28px, 4vw, 44px);
+}
+.fg { display: flex; flex-direction: column; gap: 7px; }
+.fg label { font-size: .76rem; font-weight: 500; color: var(--dim2); letter-spacing: .03em; }
+.fg input, .fg textarea, .fg select {
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-sm);
+  padding: 13px 16px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .88rem; outline: none;
+  transition: border-color .2s, background .2s;
+  width: 100%;
+}
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,.22); }
+.fg input:focus, .fg textarea:focus, .fg select:focus {
+  border-color: var(--accent);
+  background: rgba(108,99,255,.06);
+}
+.fg select option { background: #111116; }
+.fg textarea { resize: vertical; min-height: 110px; }
+.form-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-stack { display: flex; flex-direction: column; gap: 16px; margin-bottom: 22px; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding-top: 64px; padding-bottom: 36px;
+  padding-inline: clamp(24px, 5vw, 80px);
+}
+.ft-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 56px;
+}
+.ft-brand p {
+  color: var(--dim); font-size: .85rem;
+  line-height: 1.78; max-width: 270px;
+  margin-top: 14px; margin-bottom: 22px;
+}
+.ft-socials { display: flex; gap: 10px; }
+.soc {
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--dim); font-size: .85rem;
+  transition: background .2s, border-color .2s, color .2s, transform .2s;
+}
+.soc:hover {
+  background: var(--glow-s);
+  border-color: rgba(108,99,255,.3);
+  color: var(--accent-b);
+  transform: translateY(-2px);
+}
+.ft-col h4 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--dim); margin-bottom: 18px;
+}
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.ft-col ul a { color: var(--dim); font-size: .84rem; transition: color .2s; }
+.ft-col ul a:hover { color: var(--white); }
+.ft-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+}
+.ft-bottom p { font-size: .76rem; color: var(--dim); }
+.ft-bottom a { color: var(--accent-b); transition: color .2s; }
+.ft-bottom a:hover { color: var(--white); }
+
+/* ═══════════════════════════════════════
+   FLOATING WA
+═══════════════════════════════════════ */
+.float-wa {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 54px; height: 54px;
+  background: #25d366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.4rem; z-index: 700;
+  box-shadow: 0 8px 32px rgba(37,211,102,.38);
+  transition: transform .25s var(--ease), box-shadow .25s;
+}
+.float-wa:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 16px 48px rgba(37,211,102,.5); }
+.float-wa::before {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,.55);
+  animation: waRipple 2.4s ease-out infinite;
+}
+@keyframes waRipple {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .about-frame { max-width: 320px; }
+  .exp-badge { bottom: -35px; padding: 18px 60px; transform: translateY(-60px) }
+  .exp-n { font-size: 2rem; }
+}
+@media (max-width: 860px) {
+  .nav-links, .nav-pill { display: none; }
+  .ham { display: flex; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-photo-col { max-width: 100%; margin: 0; padding-bottom: 70px; }
+  .about-frame { max-width: 100%; }
+  .exp-badge { bottom: -35px; padding: 16px 60px; transform: translateY(-60px);}
+  .exp-n { font-size: 1.8rem; }
+  .why-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .pc.l, .pc.s { grid-column: span 12; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .steps::before { display: none; }
+  .hero-stats { gap: 28px; }
+}
+@media (max-width: 600px) {
+  section { padding-block: 72px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .form-two { grid-template-columns: 1fr; }
+  .ft-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .tc { min-width: 290px; max-width: 290px; }
+  .float-wa { bottom: 18px; right: 18px; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .about-frame { max-width: 100%; }
+  .about-photo-col { padding-bottom: 65px; }
+  .exp-badge { bottom: -30px; padding: 14px 40px; font-size: 0.8rem; }
+  .exp-n { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cur-dot" id="cDot"></div>
+<div class="cur-ring" id="cRing"></div>
+
+<!-- Floating WhatsApp -->
+<a class="float-wa" href="https://wa.me/1234567890" target="_blank" aria-label="Chat on WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Mobile Menu -->
+<nav class="mob-overlay" id="mobMenu">
+  <a href="#about"        onclick="closeMenu()">About</a>
+  <a href="#services"     onclick="closeMenu()">Services</a>
+  <a href="#projects"     onclick="closeMenu()">Work</a>
+  <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+  <a href="#process"      onclick="closeMenu()">Process</a>
+  <a href="#contact" class="mob-contact-pill" onclick="closeMenu()">Get a Quote</a>
+</nav>
+
+<!-- ══════════ NAV ══════════ -->
+<header id="nav">
+   <a href="#hero" class="nav-logo">
+    <div class="logo-mark">
+      <span class="mark-dot"></span>
+      <span class="mark-line"></span>
+    </div>
+    <span class="logo-name">Moin<span class="logo-accent">Uddin</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#why">Why Me</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <a href="#contact" class="nav-pill">Get a Quote</a>
+  <div class="ham" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-dots"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Available for projects — 2 slots open this month
+    </div>
+
+    <h1 class="hero-h1">
+      Websites That<br>
+      Make Your Business<br>
+      <span class="grad">Unforgettable</span>
+    </h1>
+
+    <p class="hero-p">
+      I design and build premium websites for restaurants, cafés, and local businesses that want to stand out, get found online, and turn visitors into loyal customers.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-accent">
+        Start Your Project
+        <span class="btn-icon">→</span>
+      </a>
+      <a href="#projects" class="btn btn-ghost">
+        View My Work
+        <span class="btn-icon">↗</span>
+      </a>
+    </div>
+
+    <div class="hero-social-proof">
+      <div class="avatars">
+        <span class="av1">MC</span>
+        <span class="av2">SL</span>
+        <span class="av3">JR</span>
+        <span class="av4">AP</span>
+      </div>
+      <div class="proof-text">
+        <div class="proof-stars">★★★★★</div>
+        <div><strong>58 happy clients</strong> across restaurants &amp; local businesses</div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-n">60+</div>
+        <div class="stat-l">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="stat-n">4.9★</div>
+        <div class="stat-l">Average Rating</div>
+      </div>
+      <div>
+        <div class="stat-n">98%</div>
+        <div class="stat-l">Client Retention</div>
+      </div>
+      <div>
+        <div class="stat-n">7 days</div>
+        <div class="stat-l">Average Turnaround</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-nudge">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+
+<!-- ══════════ MARQUEE ══════════ -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <!-- Items injected twice for seamless loop -->
+  </div>
+</div>
+
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about" class="wrap">
+  <div class="about-grid">
+    <div class="about-photo-col rv">
+      <div class="about-frame">
+        <div class="about-frame-inner">
+          <div class="ab-init">
+            <img src="img/moinuddin.png" alt="Profile Photo" />
+          </div>
+        </div>
+      </div>
+      <div class="exp-badge">
+        <div class="exp-n">6+</div>
+        <div class="exp-l">Years Experience</div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="eyebrow rv">About Me</div>
+      <h2 class="headline rv rv-d1">Designer Who<br>Drives Results</h2>
+      <p class="rv rv-d2">
+        Hey — I'm MoinUddin, a freelance web designer focused on restaurants, cafés, retail shops, and local businesses. I combine sharp visual design with technical precision to build websites that genuinely perform, not just impress.
+      </p>
+      <p class="rv rv-d2">
+        Every project starts with understanding your customers, your market, and your goals. The result is a website that feels authentically yours — and works hard while you sleep.
+      </p>
+      <div class="chips rv rv-d3">
+        <span class="chip">UI / UX Design</span>
+        <span class="chip">Web Development</span>
+        <span class="chip">Restaurant Sites</span>
+        <span class="chip">E-Commerce</span>
+        <span class="chip">Branding</span>
+        <span class="chip">Local SEO</span>
+        <span class="chip">Mobile-First</span>
+        <span class="chip">Figma</span>
+        <span class="chip">WordPress</span>
+        <span class="chip">Webflow</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ SERVICES ══════════ -->
+<section id="services" class="wrap">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow rv">What I Offer</div>
+      <h2 class="headline rv rv-d1">Services Built<br>For Your Growth</h2>
+    </div>
+    <p class="subline rv rv-d2" style="max-width:320px">Every package is tailored — no cookie-cutter templates here.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card rv">
+      <div class="svc-ico">🍽️</div>
+      <div class="svc-name">Restaurant Websites</div>
+      <p class="svc-desc">Full menu integration, online reservations, photo galleries, and Google Maps embed. Built to make guests hungry before they even arrive.</p>
+      <div class="svc-price">From $799<sub> / project</sub></div>
+    </div>
+    <div class="svc-card rv rv-d1">
+      <div class="svc-ico">🏪</div>
+      <div class="svc-name">Small Business Sites</div>
+      <p class="svc-desc">Professional 5–10 page websites for salons, clinics, law firms, and retail. Fast, beautiful, and built to rank on Google.</p>
+      <div class="svc-price">From $599<sub> / project</sub></div>
+    </div>
+    <div class="svc-card rv rv-d2">
+      <div class="svc-ico">🛒</div>
+      <div class="svc-name">E-Commerce Stores</div>
+      <p class="svc-desc">Full online shops with product pages, smart filters, cart, checkout, and payment integration. Sell 24/7 while you sleep.</p>
+      <div class="svc-price">From $1,199<sub> / project</sub></div>
+    </div>
+    <div class="svc-card rv rv-d1">
+      <div class="svc-ico">🔄</div>
+      <div class="svc-name">Website Redesign</div>
+      <p class="svc-desc">Old site feeling stale? I'll modernize it with faster loading, better mobile experience, and a fresher design that converts.</p>
+      <div class="svc-price">From $499<sub> / project</sub></div>
+    </div>
+    <div class="svc-card rv rv-d2">
+      <div class="svc-ico">📈</div>
+      <div class="svc-name">SEO & Performance</div>
+      <p class="svc-desc">Speed optimization, on-page SEO, and local SEO setup. Get found by customers in your city searching for your services.</p>
+      <div class="svc-price">From $299<sub> / month</sub></div>
+    </div>
+    <div class="svc-card rv rv-d3">
+      <div class="svc-ico">🛠️</div>
+      <div class="svc-name">Monthly Maintenance</div>
+      <p class="svc-desc">Updates, security patches, backups, and content changes handled for you. Focus on your business, I'll handle the tech.</p>
+      <div class="svc-price">From $99<sub> / month</sub></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ PROJECTS ══════════ -->
+<section id="projects" class="wrap">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow rv">Featured Work</div>
+      <h2 class="headline rv rv-d1">Projects That<br>Speak Volumes</h2>
+    </div>
+    <a href="#contact" class="btn btn-ghost rv rv-d2">See All Work ↗</a>
+  </div>
+
+  <div class="proj-grid">
+    <!-- 1 large -->
+    <div class="pc l rv">
+      <div class="pc-vis">
+        <div class="mock mock-bg-1">
+          <div class="browser p1">
+            <div class="browser-bar">
+              <div class="b-dot" style="background:#ff5f57"></div>
+              <div class="b-dot" style="background:#febc2e"></div>
+              <div class="b-dot" style="background:#28c840"></div>
+              <div class="b-url"></div>
+            </div>
+            <div class="browser-body">
+              <div class="b-nav">
+                <span style="width:32px"></span><span style="width:40px"></span><span style="width:36px"></span><span style="width:44px"></span>
+              </div>
+              <div class="b-hero">
+                <div class="b-h1"></div>
+                <div class="b-h2"></div>
+                <div class="b-btn"></div>
+              </div>
+              <div class="b-cards">
+                <div class="b-card"></div>
+                <div class="b-card"></div>
+                <div class="b-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-overlay"><div class="pc-arrow">↗</div></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-tag">Restaurant · 2024</div>
+        <div class="pc-name">La Bella Cucina — Italian Fine Dining</div>
+        <p class="pc-desc">Custom site with online reservations, seasonal menu, and full photo gallery. Bookings tripled within 30 days of launch.</p>
+      </div>
+    </div>
+
+    <!-- 1 small -->
+    <div class="pc s rv rv-d1">
+      <div class="pc-vis">
+        <div class="mock mock-bg-2">
+          <div class="browser p2">
+            <div class="browser-bar">
+              <div class="b-dot" style="background:#ff5f57"></div>
+              <div class="b-dot" style="background:#febc2e"></div>
+              <div class="b-dot" style="background:#28c840"></div>
+              <div class="b-url"></div>
+            </div>
+            <div class="browser-body">
+              <div class="b-hero">
+                <div class="b-h1"></div>
+                <div class="b-h2"></div>
+                <div class="b-btn"></div>
+              </div>
+              <div class="b-cards">
+                <div class="b-card"></div>
+                <div class="b-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-overlay"><div class="pc-arrow">↗</div></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-tag">Café & Bakery · 2024</div>
+        <div class="pc-name">Sunrise Bakehouse</div>
+        <p class="pc-desc">E-commerce bakery with online pre-orders and a loyalty system.</p>
+      </div>
+    </div>
+
+    <!-- 1 small -->
+    <div class="pc s rv rv-d1">
+      <div class="pc-vis">
+        <div class="mock mock-bg-3">
+          <div class="browser p3">
+            <div class="browser-bar">
+              <div class="b-dot" style="background:#ff5f57"></div>
+              <div class="b-dot" style="background:#febc2e"></div>
+              <div class="b-dot" style="background:#28c840"></div>
+              <div class="b-url"></div>
+            </div>
+            <div class="browser-body">
+              <div class="b-hero">
+                <div class="b-h1"></div>
+                <div class="b-h2"></div>
+                <div class="b-btn"></div>
+              </div>
+              <div class="b-cards">
+                <div class="b-card"></div>
+                <div class="b-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-overlay"><div class="pc-arrow">↗</div></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-tag">Health & Wellness · 2023</div>
+        <div class="pc-name">Vitality Wellness Center</div>
+        <p class="pc-desc">Clinic booking system, service pages, and local SEO setup.</p>
+      </div>
+    </div>
+
+    <!-- 1 large -->
+    <div class="pc l rv rv-d2">
+      <div class="pc-vis">
+        <div class="mock mock-bg-4">
+          <div class="browser p4">
+            <div class="browser-bar">
+              <div class="b-dot" style="background:#ff5f57"></div>
+              <div class="b-dot" style="background:#febc2e"></div>
+              <div class="b-dot" style="background:#28c840"></div>
+              <div class="b-url"></div>
+            </div>
+            <div class="browser-body">
+              <div class="b-nav">
+                <span style="width:36px"></span><span style="width:44px"></span><span style="width:32px"></span><span style="width:50px"></span>
+              </div>
+              <div class="b-hero">
+                <div class="b-h1"></div>
+                <div class="b-h2"></div>
+                <div class="b-btn"></div>
+              </div>
+              <div class="b-cards">
+                <div class="b-card"></div>
+                <div class="b-card"></div>
+                <div class="b-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-overlay"><div class="pc-arrow">↗</div></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-tag">Retail & Fashion · 2024</div>
+        <div class="pc-name">Luxe Boutique — Fashion E-Commerce</div>
+        <p class="pc-desc">200+ products, wishlist, smart filters, and Stripe checkout. Online revenue up 60% in three months post-launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ WHY ME ══════════ -->
+<section id="why" class="wrap">
+  <div class="why-grid">
+    <div>
+      <div class="eyebrow rv">Why Work With Me</div>
+      <h2 class="headline rv rv-d1" style="margin-bottom:36px">The Difference<br>You'll Feel</h2>
+      <div class="why-reasons">
+        <div class="reason rv">
+          <div class="reason-n">01</div>
+          <div>
+            <h3>Fast Turnaround, No Delays</h3>
+            <p>Most projects delivered in 7–14 days. I respect your time and I always meet deadlines. You'll never be left waiting with no updates.</p>
+          </div>
+        </div>
+        <div class="reason rv rv-d1">
+          <div class="reason-n">02</div>
+          <div>
+            <h3>Designed to Convert</h3>
+            <p>Beautiful isn't enough. Every layout, call-to-action, and user flow is intentional — guiding visitors toward booking, buying, or calling you.</p>
+          </div>
+        </div>
+        <div class="reason rv rv-d2">
+          <div class="reason-n">03</div>
+          <div>
+            <h3>Mobile-First, Always</h3>
+            <p>70%+ of your customers find you on their phone. Every site I build looks and works flawlessly on any screen, any device.</p>
+          </div>
+        </div>
+        <div class="reason rv rv-d3">
+          <div class="reason-n">04</div>
+          <div>
+            <h3>Direct, Honest Communication</h3>
+            <p>No project managers, no layers. You work directly with me. Quick replies, transparent updates, and zero surprises.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-widgets">
+      <div class="wg rv">
+        <div class="wg-label">Client Satisfaction Score</div>
+        <div class="rat-row">
+          <div class="rat-num">4.9</div>
+          <div>
+            <div class="rat-stars">★★★★★</div>
+            <div class="rat-sub">From 58 verified reviews</div>
+          </div>
+        </div>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-lbl">Design</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:98%"></div></div>
+            <span class="bar-val">98%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-lbl">Delivery</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:96%"></div></div>
+            <span class="bar-val">96%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-lbl">Comms</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+            <span class="bar-val">100%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-lbl">Value</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div>
+            <span class="bar-val">95%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="wg rv rv-d1">
+        <div class="wg-label">Technologies I Use</div>
+        <div class="tech-chips">
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">WordPress</span>
+          <span class="chip">Webflow</span>
+          <span class="chip">Shopify</span>
+          <span class="chip">Figma</span>
+          <span class="chip">React</span>
+          <span class="chip">SEO Tools</span>
+        </div>
+      </div>
+
+      <div class="wg wg-live rv rv-d2">
+        <div class="live-row">
+          <div class="live-dot"></div>
+          <span class="live-txt">Currently accepting new clients</span>
+        </div>
+        <p>Only 2 project slots open this month. Lock yours in with a free 30-min consultation — no obligation.</p>
+        <a href="#contact" class="btn btn-accent" style="margin-top:18px; font-size:.82rem; padding:12px 22px;">Book Free Consultation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section id="testimonials" class="wrap">
+  <div class="eyebrow rv">Testimonials</div>
+  <h2 class="headline rv rv-d1">What Clients Say</h2>
+  <div class="testi-scroll" id="testiScroll">
+    <div class="tc">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-quote">"Our bookings went up 3x in the first month after launching. MoinUddin understood exactly what a restaurant needs online and delivered something truly beautiful."</p>
+      <div class="tc-author">
+        <div class="tc-av">MC</div>
+        <div><div class="tc-name">Marco Caruso</div><div class="tc-role">Owner, La Bella Cucina</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-quote">"The site was done in under two weeks and looks a million times better than what we had. Customers keep complimenting it — and so does our accountant."</p>
+      <div class="tc-author">
+        <div class="tc-av">SL</div>
+        <div><div class="tc-name">Sarah Li</div><div class="tc-role">Co-founder, Sunrise Bakehouse</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-quote">"I'd been burned by other designers before. MoinUddin communicated clearly every step of the way — the final product blew my expectations. Worth every penny."</p>
+      <div class="tc-author">
+        <div class="tc-av">JR</div>
+        <div><div class="tc-name">James Rodriguez</div><div class="tc-role">Owner, Rodriguez Auto Detail</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-quote">"Online sales jumped 60% within 3 months of the store launch. MoinUddin built something that genuinely works, not just looks pretty. Couldn't be happier."</p>
+      <div class="tc-author">
+        <div class="tc-av">AP</div>
+        <div><div class="tc-name">Amira Patel</div><div class="tc-role">Founder, Luxe Boutique</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-quote">"Patients now find us on Google, and the online booking system saves hours of phone calls every week. The redesign completely transformed our practice."</p>
+      <div class="tc-author">
+        <div class="tc-av">DK</div>
+        <div><div class="tc-name">Dr. David Kim</div><div class="tc-role">Director, Vitality Wellness Center</div></div>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-quote">"From our first call to the launch day, everything was smooth and professional. Moin is one of the rare designers who also understands business. Highly recommended."</p>
+      <div class="tc-author">
+        <div class="tc-av">LN</div>
+        <div><div class="tc-name">Lisa Nguyen</div><div class="tc-role">CEO, Pearl Spa & Beauty</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ PROCESS ══════════ -->
+<section id="process" class="wrap">
+  <div class="process-title-area">
+    <div class="eyebrow rv" style="justify-content:center">My Process</div>
+    <h2 class="headline rv rv-d1" style="margin-bottom:16px">From Idea to<br>Live in Days</h2>
+    <p class="subline rv rv-d2">A clear, efficient process that keeps you informed and in control at every step.</p>
+  </div>
+  <div class="steps">
+    <div class="step rv">
+      <div class="step-num"><span>01</span></div>
+      <h3>Discovery Call</h3>
+      <p>We talk about your business, goals, competitors, and the look you want. Free 30-minute video call, no strings attached.</p>
+    </div>
+    <div class="step rv rv-d1">
+      <div class="step-num"><span>02</span></div>
+      <h3>Design & Wireframe</h3>
+      <p>I create a custom Figma mockup. You review and give feedback — up to 3 revision rounds — until it's exactly right.</p>
+    </div>
+    <div class="step rv rv-d2">
+      <div class="step-num"><span>03</span></div>
+      <h3>Build & Develop</h3>
+      <p>Design approved → I build it. Clean code, fast loading, fully mobile responsive, with all features working perfectly.</p>
+    </div>
+    <div class="step rv rv-d3">
+      <div class="step-num"><span>04</span></div>
+      <h3>Launch & Handoff</h3>
+      <p>We test everything together, go live on your domain, and I walk you through the site. You get full ownership and support docs.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ CTA BAND ══════════ -->
+<section id="cta-band">
+  <div class="cta-inner">
+    <div class="cta-orb"></div>
+    <div class="eyebrow rv" style="justify-content:center">Ready to Start?</div>
+    <h2 class="headline rv rv-d1" style="margin-bottom:20px">Let's Build Something<br><span style="background:linear-gradient(130deg,var(--accent-b),#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Extraordinary</span></h2>
+    <p class="rv rv-d2">Tell me about your project and I'll reply with a free quote within 24 hours.</p>
+    <div class="cta-btns rv rv-d3">
+      <a href="#contact" class="btn btn-accent">Get a Free Quote →</a>
+      <a href="https://wa.me/1234567890" target="_blank" class="wa-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact" class="wrap">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="eyebrow rv">Get In Touch</div>
+      <h2 class="headline rv rv-d1">Let's Talk<br>About Your Project</h2>
+      <p class="rv rv-d2">Fill out the form and I'll reply within 24 hours with a free, no-obligation quote and initial ideas for your project.</p>
+      <div class="contact-details rv rv-d2">
+        <div class="cd-item"><div class="cd-ico">✉️</div>hey.mainuddin@gmail.com</div>
+        <div class="cd-item"><div class="cd-ico">💬</div>WhatsApp: +8801862611243</div>
+        <div class="cd-item"><div class="cd-ico">📍</div>Remote — Worldwide</div>
+        <div class="cd-item"><div class="cd-ico">⏱️</div>Typical reply in &lt; 4 hours</div>
+      </div>
+      <a href="https://wa.me/1234567890" target="_blank" class="wa-btn rv rv-d3" style="display:inline-flex">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <div class="cform rv rv-d1">
+      <div class="form-stack">
+        <div class="form-two">
+          <div class="fg">
+            <label>Your Name *</label>
+            <input type="text" placeholder="John Smith">
+          </div>
+          <div class="fg">
+            <label>Email Address *</label>
+            <input type="email" placeholder="john@yourbusiness.com">
+          </div>
+        </div>
+        <div class="form-two">
+          <div class="fg">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="+1 (555) 000-0000">
+          </div>
+          <div class="fg">
+            <label>Business Type</label>
+            <select>
+              <option value="">Select industry</option>
+              <option>Restaurant / Café</option>
+              <option>Retail / Boutique</option>
+              <option>Health & Wellness</option>
+              <option>Professional Services</option>
+              <option>Beauty / Salon</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Service Needed</label>
+          <select>
+            <option value="">What do you need?</option>
+            <option>New Website</option>
+            <option>Website Redesign</option>
+            <option>E-Commerce Store</option>
+            <option>SEO & Performance</option>
+            <option>Monthly Maintenance</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Tell Me About Your Project *</label>
+          <textarea placeholder="Describe your business, goals, timeline, and any design references you love..."></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-accent" onclick="this.textContent='✓ Sent! I\'ll reply soon.'; this.style.background='#059669'">
+          Send Message <span>→</span>
+        </button>
+        <span style="font-size:.78rem; color:var(--dim)">Free quote · No obligation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="nav-logo"><div class="logo-pip"></div>MoinUddin</div>
+      <p>Crafting premium websites for restaurants, local businesses, and startups that refuse to blend in.</p>
+      <div class="ft-socials">
+        <a class="soc" href="#" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="soc" href="#" title="X / Twitter">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="soc" href="#" title="LinkedIn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a class="soc" href="#" title="Dribbble">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Restaurant Websites</a></li>
+        <li><a href="#services">Small Business Sites</a></li>
+        <li><a href="#services">E-Commerce Stores</a></li>
+        <li><a href="#services">Website Redesign</a></li>
+        <li><a href="#services">SEO & Performance</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hey.mainuddin@gmail.com">hey.mainuddin@gmail.com</a></li>
+        <li><a href="https://wa.me/1234567890">WhatsApp Chat</a></li>
+        <li><a href="#contact">Free Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2025 MoinUddin Design Studio · All rights reserved.</p>
+    <p>Made for businesses that want to grow · <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+
+<script>
+/* ──────────────────────────────────────
+   CURSOR
+────────────────────────────────────── */
+const dot  = document.getElementById('cDot');
+const ring = document.getElementById('cRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+const isTouch = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (!isTouch()) {
+  document.body.style.cursor = 'none';
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+  });
+  (function trail() {
+    rx += (mx - rx) * .13;
+    ry += (my - ry) * .13;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(trail);
+  })();
+  document.querySelectorAll('a,button,.svc-card,.pc,.chip,.soc').forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('big'); ring.classList.add('big'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('big'); ring.classList.remove('big'); });
+  });
+} else {
+  dot.style.display = ring.style.display = 'none';
+}
+
+/* ──────────────────────────────────────
+   NAV STUCK
+────────────────────────────────────── */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('stuck', scrollY > 50);
+addEventListener('scroll', onScroll, { passive: true });
+
+/* ──────────────────────────────────────
+   MOBILE MENU
+────────────────────────────────────── */
+function toggleMenu() {
+  document.getElementById('ham').classList.toggle('x');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('ham').classList.remove('x');
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
+/* ──────────────────────────────────────
+   REVEAL ON SCROLL
+────────────────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ──────────────────────────────────────
+   SMOOTH ANCHOR SCROLL
+────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ──────────────────────────────────────
+   MARQUEE BUILD
+────────────────────────────────────── */
+const items = [
+  { icon: '🍽️', text: 'Restaurant Websites' },
+  { icon: '☕', text: 'Café & Bakery Stores' },
+  { icon: '🛒', text: 'E-Commerce Shops' },
+  { icon: '💈', text: 'Salon & Beauty Sites' },
+  { icon: '🏥', text: 'Clinic Booking Systems' },
+  { icon: '🏪', text: 'Retail Businesses' },
+  { icon: '⚖️', text: 'Professional Services' },
+  { icon: '📈', text: 'Local SEO & Performance' },
+  { icon: '🎨', text: 'Brand & Identity Design' },
+];
+const track = document.getElementById('marquee');
+// Render twice for seamless loop
+[...items, ...items].forEach((it, i) => {
+  const d = document.createElement('div');
+  d.className = 'marquee-item';
+  d.innerHTML = `<svg width="5" height="5" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#6c63ff"/></svg>${it.icon} ${it.text}`;
+  track.appendChild(d);
+});
+
+/* ──────────────────────────────────────
+   TESTIMONIALS DRAG SCROLL
+────────────────────────────────────── */
+const ts = document.getElementById('testiScroll');
+let dragging = false, startX, sl;
+ts.addEventListener('mousedown', e => { dragging = true; startX = e.pageX - ts.offsetLeft; sl = ts.scrollLeft; ts.style.cursor = 'grabbing'; });
+ts.addEventListener('mouseleave', () => { dragging = false; ts.style.cursor = 'grab'; });
+ts.addEventListener('mouseup',    () => { dragging = false; ts.style.cursor = 'grab'; });
+ts.addEventListener('mousemove',  e => { if (!dragging) return; e.preventDefault(); ts.scrollLeft = sl - (e.pageX - ts.offsetLeft - startX); });
+</script>
+</body>
+</html>
