@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law Firm Website Design Services | Attorney Websites That Win Clients — MoinUddin</title>
+<meta name="description" content="Custom law firm website design for attorneys, solicitors, and legal practices. SEO-optimized, mobile-first sites with consultation booking and case-area pages. Fast 7-14 day delivery.">
+<meta name="keywords" content="law firm website design, attorney website design, lawyer website builder, legal website development, law firm SEO, website for solicitors">
+<link rel="canonical" href="https://example.com/services/law-firm-website-design.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Law Firm Website Design Services | MoinUddin Design Studio">
+<meta property="og:description" content="Custom websites for law firms and attorneys — built to attract clients, rank on Google, and convert visitors into consultations.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Law Firm Website Design",
+  "provider": {
+    "@type": "Organization",
+    "name": "MoinUddin Design Studio"
+  },
+  "areaServed": "Worldwide",
+  "description": "Custom website design and development for law firms, solicitors, and legal practices, including SEO, practice area pages, and consultation booking systems.",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "899"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a law firm website cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Law firm websites built by MoinUddin Design Studio start from $899, depending on the number of practice area pages, attorney profiles, and features such as consultation booking or client intake forms." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a law firm website?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most law firm websites are delivered within 7 to 14 days, including discovery, design, development, and content for practice area pages." }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my law firm website be optimized for local SEO?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every law firm website includes on-page SEO, location-based practice area pages, schema markup, and Google Business Profile alignment to help your firm rank for local searches." }
+    }
+  ]
+}
+</script>
+
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --bg:       #070709;
+  --bg-alt:   #0d0d11;
+  --bg-card:  #111116;
+  --border:   rgba(255,255,255,0.07);
+  --border-hi:rgba(255,255,255,0.13);
+  --white:    #f5f5f7;
+  --dim:      rgba(245,245,247,0.42);
+  --dim2:     rgba(245,245,247,0.62);
+  --accent:   #6c63ff;
+  --accent-b: #867eff;
+  --glow:     rgba(108,99,255,0.22);
+  --glow-s:   rgba(108,99,255,0.10);
+  --green:    #34d399;
+  --r-sm:     12px;
+  --r-md:     18px;
+  --r-lg:     26px;
+  --r-xl:     36px;
+  --nav-h:    68px;
+  --ease:     cubic-bezier(0.22, 1, 0.36, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: #fff; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; border: none; cursor: pointer; }
+
+/* NAV */
+#nav {
+  position: fixed; top: 0; inset-inline: 0;
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  padding: 0 clamp(24px, 5vw, 80px);
+  z-index: 600;
+  transition: background .35s, border-color .35s;
+  border-bottom: 1px solid transparent;
+}
+#nav.stuck {
+  background: rgba(7,7,9,.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-color: var(--border);
+}
+.nav-logo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -.03em;
+  display: flex; align-items: center; gap: 12px;
+  flex-shrink: 0;
+}
+.logo-mark {
+  position: relative; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.mark-dot {
+  position: absolute; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 12px var(--accent);
+  animation: logoPulse 2.8s ease-in-out infinite;
+}
+.mark-line {
+  position: absolute; width: 14px; height: 1.5px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 1px; transform: rotate(45deg);
+  animation: logoRotate 4s linear infinite;
+}
+@keyframes logoPulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.4);opacity:.6;} }
+@keyframes logoRotate { 0%{transform:rotate(45deg);} 100%{transform:rotate(405deg);} }
+.logo-name {
+  display: flex; align-items: baseline; gap: 3px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--dim2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.logo-accent {
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent-b) 0%, var(--accent) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  letter-spacing: -.02em;
+}
+#nav.stuck .logo-mark, #nav.stuck .mark-dot, #nav.stuck .mark-line { animation: none; transform: scale(1) rotate(45deg); }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; margin: 0 auto; }
+.nav-links a {
+  font-size: .8rem; font-weight: 400; color: var(--dim2); letter-spacing: .01em;
+  position: relative; transition: color .2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 1px; background: var(--accent);
+  transition: width .3s var(--ease);
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-pill {
+  background: var(--accent); color: #fff !important; font-weight: 500 !important;
+  padding: 9px 20px; border-radius: 100px; font-size: .8rem !important;
+  transition: background .2s, box-shadow .2s, transform .2s; flex-shrink: 0;
+}
+.nav-pill:hover { background: var(--accent-b); box-shadow: 0 6px 24px var(--glow); transform: translateY(-1px); }
+.nav-pill::after { display: none !important; }
+.ham { display: none; flex-direction: column; gap: 5px; padding: 6px; cursor: pointer; margin-left: auto; }
+.ham span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: transform .3s var(--ease), opacity .2s; transform-origin: center; }
+.ham.x span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.ham.x span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.ham.x span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mob-overlay {
+  position: fixed; inset: 0; background: rgba(7,7,9,.97);
+  backdrop-filter: blur(32px); z-index: 580;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  opacity: 0; pointer-events: none; transition: opacity .4s var(--ease);
+}
+.mob-overlay.open { opacity: 1; pointer-events: all; }
+.mob-overlay a {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 700; color: var(--dim2);
+  padding: 10px 0; transition: color .2s, transform .2s;
+}
+.mob-overlay a:hover { color: var(--white); transform: translateX(8px); }
+.mob-contact-pill {
+  margin-top: 20px; background: var(--accent); color: #fff; font-weight: 500;
+  padding: 14px 40px; border-radius: 100px; font-size: 1rem; transition: background .2s;
+}
+.mob-contact-pill:hover { background: var(--accent-b); color: #fff; }
+
+/* SHARED HELPERS */
+.wrap { padding-inline: clamp(24px, 5vw, 80px); }
+section { padding-block: clamp(64px, 9vw, 120px); }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: .72rem; font-weight: 500; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--accent-b); margin-bottom: 18px;
+}
+.eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+.headline {
+  font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+  line-height: 1.02; letter-spacing: -.04em;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+}
+.subline { font-size: clamp(.95rem, 1.3vw, 1.1rem); color: var(--dim); line-height: 1.8; max-width: 540px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 15px 32px; border-radius: 100px; font-size: .88rem; font-weight: 500;
+  transition: transform .25s var(--ease), box-shadow .25s, background .2s; cursor: pointer;
+}
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-b); transform: translateY(-2px); box-shadow: 0 14px 40px var(--glow); }
+.btn-ghost { color: var(--dim2); border: 1px solid var(--border-hi); }
+.btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,.28); transform: translateY(-2px); }
+.btn-icon { font-size: 1rem; line-height: 1; }
+.rv { opacity: 0; transform: translateY(32px); transition: opacity .75s var(--ease), transform .75s var(--ease); }
+.rv.in { opacity: 1; transform: translateY(0); }
+.rv-d1 { transition-delay: .08s; } .rv-d2 { transition-delay: .16s; } .rv-d3 { transition-delay: .24s; } .rv-d4 { transition-delay: .32s; }
+
+/* PAGE HERO */
+#page-hero {
+  position: relative; overflow: hidden;
+  padding-block: calc(var(--nav-h) + 80px) 70px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+.orb-1 {
+  width: clamp(300px, 50vw, 620px); height: clamp(300px, 50vw, 620px);
+  background: radial-gradient(circle, rgba(108,99,255,.16) 0%, transparent 70%);
+  top: -20%; right: -10%;
+}
+.breadcrumbs { font-size: .8rem; color: var(--dim); margin-bottom: 22px; }
+.breadcrumbs a { color: var(--dim2); transition: color .2s; }
+.breadcrumbs a:hover { color: var(--accent-b); }
+.page-hero-grid {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(40px, 6vw, 90px);
+  align-items: end; position: relative; z-index: 2;
+}
+.page-hero-grid .headline { margin-bottom: 18px; }
+.page-hero-grid p.lead { color: var(--dim); font-size: 1rem; line-height: 1.85; margin-bottom: 28px; max-width: 520px; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-stat-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 30px; display: flex; flex-direction: column; gap: 18px;
+}
+.hero-stat-row { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+.hero-stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+.hero-stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.6rem; letter-spacing: -.03em; color: var(--accent-b); }
+.hero-stat-lbl { font-size: .8rem; color: var(--dim); }
+
+/* INTRO TEXT BLOCK (SEO copy) */
+#intro { background: var(--bg-alt); }
+.intro-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px);
+  max-width: 1200px; margin: 0 auto;
+}
+.intro-grid p { color: var(--dim); font-size: .95rem; line-height: 1.85; margin-bottom: 16px; }
+.intro-grid h2, .intro-grid h3 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; letter-spacing: -.02em; margin-bottom: 14px; }
+.intro-grid h2 { font-size: 1.7rem; }
+.intro-grid h3 { font-size: 1.1rem; margin-top: 6px; }
+
+/* FEATURES / WHAT'S INCLUDED */
+#features { background: var(--bg); }
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.feat-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 32px 28px; transition: border-color .3s, transform .35s var(--ease);
+}
+.feat-card:hover { border-color: var(--border-hi); transform: translateY(-5px); }
+.feat-ico {
+  width: 46px; height: 46px; border-radius: var(--r-sm); background: var(--glow-s);
+  border: 1px solid rgba(108,99,255,.18);
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 20px;
+}
+.feat-card h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 9px; }
+.feat-card p { color: var(--dim); font-size: .85rem; line-height: 1.72; }
+
+/* PAGES WE BUILD (practice areas / list block) */
+#sub-pages { background: var(--bg-alt); }
+.sub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.sub-item {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md);
+  padding: 22px 22px; font-size: .88rem; color: var(--dim2);
+  display: flex; align-items: center; gap: 12px;
+  transition: border-color .2s, color .2s;
+}
+.sub-item:hover { border-color: rgba(108,99,255,.3); color: var(--white); }
+.sub-item .num { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; color: var(--accent-b); font-size: .8rem; flex-shrink: 0; }
+
+/* PRICING */
+#pricing { background: var(--bg); }
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.price-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 36px 32px; display: flex; flex-direction: column;
+  transition: border-color .3s, transform .35s var(--ease);
+}
+.price-card.feat { border-color: rgba(108,99,255,.35); background: linear-gradient(160deg, rgba(108,99,255,.08), var(--bg-card) 60%); }
+.price-card:hover { transform: translateY(-5px); border-color: var(--border-hi); }
+.price-tag { font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-b); margin-bottom: 12px; font-weight: 600; }
+.price-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+.price-amt { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.2rem; font-weight: 800; letter-spacing: -.04em; margin-bottom: 18px; }
+.price-amt sub { font-size: .8rem; font-weight: 400; color: var(--dim); font-family: 'DM Sans', sans-serif; }
+.price-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex-grow: 1; }
+.price-list li { font-size: .85rem; color: var(--dim2); display: flex; gap: 10px; align-items: flex-start; }
+.price-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+/* FAQ */
+#faq { background: var(--bg-alt); }
+.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%; background: none; text-align: left; padding: 24px 4px;
+  display: flex; justify-content: space-between; align-items: center; gap: 20px;
+  font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white);
+}
+.faq-q .plus { font-size: 1.4rem; color: var(--accent-b); transition: transform .3s var(--ease); flex-shrink: 0; font-weight: 400; }
+.faq-item.open .faq-q .plus { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height .35s var(--ease);
+}
+.faq-a p { color: var(--dim); font-size: .9rem; line-height: 1.8; padding: 0 4px 24px; max-width: 680px; }
+.faq-item.open .faq-a { max-height: 240px; }
+
+/* CTA BAND */
+#cta-band { background: var(--bg); padding-block: clamp(70px, 9vw, 120px); }
+.cta-inner { max-width: 820px; margin: 0 auto; text-align: center; padding-inline: clamp(24px, 5vw, 80px); position: relative; }
+.cta-orb {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 280px;
+  background: radial-gradient(ellipse, rgba(108,99,255,.12) 0%, transparent 70%);
+  filter: blur(60px); pointer-events: none;
+}
+.cta-inner .headline { font-size: clamp(2.4rem, 5.5vw, 4.6rem); margin-bottom: 18px; }
+.cta-inner p { color: var(--dim); font-size: 1rem; line-height: 1.75; margin-bottom: 38px; max-width: 480px; margin-inline: auto; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.wa-btn {
+  display: inline-flex; align-items: center; gap: 9px; background: #25d366; color: #fff;
+  padding: 15px 30px; border-radius: 100px; font-size: .88rem; font-weight: 500;
+  transition: background .2s, transform .25s var(--ease), box-shadow .25s;
+}
+.wa-btn:hover { background: #1db954; transform: translateY(-2px); box-shadow: 0 14px 36px rgba(37,211,102,.28); }
+
+/* FOOTER */
+footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding-top: 56px; padding-bottom: 32px; padding-inline: clamp(24px, 5vw, 80px); }
+.ft-grid { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 48px; }
+.ft-brand p { color: var(--dim); font-size: .85rem; line-height: 1.78; max-width: 270px; margin-top: 14px; }
+.logo-pip { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.ft-col h4 { font-family: 'Bricolage Grotesque', sans-serif; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--dim); margin-bottom: 18px; }
+.ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.ft-col ul a { color: var(--dim); font-size: .84rem; transition: color .2s; }
+.ft-col ul a:hover { color: var(--white); }
+.ft-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--border); padding-top: 24px; }
+.ft-bottom p { font-size: .76rem; color: var(--dim); }
+.ft-bottom a { color: var(--accent-b); transition: color .2s; }
+.ft-bottom a:hover { color: var(--white); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .feat-grid { grid-template-columns: repeat(2, 1fr); }
+  .sub-grid { grid-template-columns: repeat(2, 1fr); }
+  .price-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 860px) {
+  .nav-links, .nav-pill { display: none; }
+  .ham { display: flex; }
+  .page-hero-grid { grid-template-columns: 1fr; }
+  .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 600px) {
+  section { padding-block: 56px; }
+  #page-hero { padding-block: calc(var(--nav-h) + 50px) 50px; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .sub-grid { grid-template-columns: 1fr; }
+  .ft-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile Menu -->
+<nav class="mob-overlay" id="mobMenu">
+  <a href="../portfolio.html#about" onclick="closeMenu()">About</a>
+  <a href="../portfolio.html#services" onclick="closeMenu()">Services</a>
+  <a href="../portfolio.html#projects" onclick="closeMenu()">Work</a>
+  <a href="../portfolio.html#testimonials" onclick="closeMenu()">Reviews</a>
+  <a href="../portfolio.html#contact" class="mob-contact-pill" onclick="closeMenu()">Get a Quote</a>
+</nav>
+
+<!-- NAV -->
+<header id="nav">
+  <a href="../portfolio.html" class="nav-logo">
+    <div class="logo-mark"><span class="mark-dot"></span><span class="mark-line"></span></div>
+    <span class="logo-name">Moin<span class="logo-accent">Uddin</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../portfolio.html#about">About</a></li>
+    <li><a href="../portfolio.html#services">Services</a></li>
+    <li><a href="../portfolio.html#projects">Work</a></li>
+    <li><a href="../portfolio.html#why">Why Me</a></li>
+    <li><a href="../portfolio.html#testimonials">Reviews</a></li>
+  </ul>
+  <a href="../portfolio.html#contact" class="nav-pill">Get a Quote</a>
+  <div class="ham" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</header>
+
+<!-- PAGE HERO -->
+<section id="page-hero" class="wrap">
+  <div class="orb orb-1"></div>
+  <div class="breadcrumbs rv">
+    <a href="../portfolio.html">Home</a> / <a href="../portfolio.html#services">Services</a> / Law Firm Website Design
+  </div>
+  <div class="page-hero-grid">
+    <div>
+      <div class="eyebrow rv">Legal Industry Web Design</div>
+      <h1 class="headline rv rv-d1">Law Firm Website Design That Builds Trust &amp; Brings In Clients</h1>
+      <p class="lead rv rv-d2">A custom-built website for your law firm or solo practice — designed to look credible, rank for searches like "lawyer near me," and turn website visitors into booked consultations. Built for attorneys, solicitors, family law practices, personal injury firms, and legal consultants who want a site that works as hard as they do.</p>
+      <div class="hero-btns rv rv-d3">
+        <a href="../portfolio.html#contact" class="btn btn-accent">Get a Free Quote <span class="btn-icon">→</span></a>
+        <a href="../portfolio.html#projects" class="btn btn-ghost">See Examples <span class="btn-icon">↗</span></a>
+      </div>
+    </div>
+    <div class="hero-stat-card rv rv-d2">
+      <div class="hero-stat-row"><span class="hero-stat-lbl">Starting Price</span><span class="hero-stat-num">$899</span></div>
+      <div class="hero-stat-row"><span class="hero-stat-lbl">Delivery Time</span><span class="hero-stat-num">7–14 Days</span></div>
+      <div class="hero-stat-row"><span class="hero-stat-lbl">Practice Area Pages</span><span class="hero-stat-num">Unlimited</span></div>
+      <div class="hero-stat-row"><span class="hero-stat-lbl">Revision Rounds</span><span class="hero-stat-num">3 Included</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO / SEO COPY -->
+<section id="intro" class="wrap">
+  <div class="intro-grid">
+    <div class="rv">
+      <h2>Why Your Law Firm Needs a Website Built for Search</h2>
+      <p>Most people searching for legal help start with Google — typing things like "divorce lawyer near me" or "personal injury attorney [city]." If your firm's website isn't structured for these searches, you're handing potential clients to competitors who show up first.</p>
+      <p>A law firm website from MoinUddin Design Studio is built around how people actually search for legal services. That means dedicated practice area pages, location-targeted content, clear attorney bios, and calls to action that make it easy for a worried, time-pressed visitor to book a consultation without hunting for your phone number.</p>
+    </div>
+    <div class="rv rv-d1">
+      <h3>Built For Every Type of Legal Practice</h3>
+      <p>Whether you run a solo practice, a boutique litigation firm, or a multi-attorney office covering family law, criminal defense, immigration, real estate, employment law, or estate planning — the site is structured around your specific practice areas, not a generic "Lawyer Website" template.</p>
+      <h3>Designed to Convert Anxious Visitors</h3>
+      <p>Legal decisions are stressful. The design uses clear typography, calm visual hierarchy, and reassuring proof elements — case results, testimonials, credentials — placed exactly where a hesitant visitor needs reassurance before contacting your firm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="wrap">
+  <div class="section-head rv" style="margin-bottom:48px">
+    <div class="eyebrow">What's Included</div>
+    <h2 class="headline">Everything Your Firm Needs<br>To Get Found &amp; Get Hired</h2>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card rv">
+      <div class="feat-ico">⚖️</div>
+      <h3>Practice Area Pages</h3>
+      <p>A dedicated, SEO-structured page for each area of law you practice — family law, criminal defense, personal injury, immigration, business law, and more.</p>
+    </div>
+    <div class="feat-card rv rv-d1">
+      <div class="feat-ico">📍</div>
+      <h3>Local SEO Setup</h3>
+      <p>On-page SEO targeting your city and surrounding areas, Google Business Profile alignment, and schema markup so search engines understand exactly what your firm does and where.</p>
+    </div>
+    <div class="feat-card rv rv-d2">
+      <div class="feat-ico">📅</div>
+      <h3>Consultation Booking</h3>
+      <p>An integrated booking or contact form that lets potential clients request a free consultation in seconds — reducing missed leads from phone-only intake.</p>
+    </div>
+    <div class="feat-card rv">
+      <div class="feat-ico">👤</div>
+      <h3>Attorney Profile Pages</h3>
+      <p>Professional bio pages for each attorney, including credentials, bar admissions, education, and areas of focus — building credibility before the first call.</p>
+    </div>
+    <div class="feat-card rv rv-d1">
+      <div class="feat-ico">📱</div>
+      <h3>Mobile-First Design</h3>
+      <p>Most legal searches happen on mobile, often during a stressful moment. The site is built to load fast and work flawlessly on any phone.</p>
+    </div>
+    <div class="feat-card rv rv-d2">
+      <div class="feat-ico">🔒</div>
+      <h3>Secure &amp; Confidential Forms</h3>
+      <p>Contact and intake forms designed with client confidentiality in mind, with clear privacy messaging that builds trust from the first interaction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS WE BUILD PAGES FOR -->
+<section id="sub-pages" class="wrap">
+  <div class="section-head rv" style="margin-bottom:40px">
+    <div class="eyebrow">Practice Areas Covered</div>
+    <h2 class="headline">Pages Tailored To<br>Your Areas of Law</h2>
+  </div>
+  <div class="sub-grid">
+    <div class="sub-item rv"><span class="num">01</span>Family &amp; Divorce Law</div>
+    <div class="sub-item rv rv-d1"><span class="num">02</span>Personal Injury</div>
+    <div class="sub-item rv rv-d2"><span class="num">03</span>Criminal Defense</div>
+    <div class="sub-item rv rv-d3"><span class="num">04</span>Immigration Law</div>
+    <div class="sub-item rv"><span class="num">05</span>Estate Planning &amp; Probate</div>
+    <div class="sub-item rv rv-d1"><span class="num">06</span>Business &amp; Corporate Law</div>
+    <div class="sub-item rv rv-d2"><span class="num">07</span>Real Estate Law</div>
+    <div class="sub-item rv rv-d3"><span class="num">08</span>Employment Law</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="wrap">
+  <div class="section-head rv" style="margin-bottom:48px">
+    <div class="eyebrow">Pricing</div>
+    <h2 class="headline">Transparent Packages<br>For Every Firm Size</h2>
+  </div>
+  <div class="price-grid">
+    <div class="price-card rv">
+      <div class="price-tag">Solo Practice</div>
+      <div class="price-name">Starter</div>
+      <div class="price-amt">$899</div>
+      <ul class="price-list">
+        <li>5-page website</li>
+        <li>1 practice area page</li>
+        <li>Mobile-first responsive design</li>
+        <li>Contact form + map</li>
+        <li>Basic on-page SEO</li>
+      </ul>
+      <a href="../portfolio.html#contact" class="btn btn-ghost" style="justify-content:center">Get Started</a>
+    </div>
+    <div class="price-card feat rv rv-d1">
+      <div class="price-tag">Most Popular</div>
+      <div class="price-name">Growth</div>
+      <div class="price-amt">$1,499</div>
+      <ul class="price-list">
+        <li>Up to 10 pages</li>
+        <li>Up to 4 practice area pages</li>
+        <li>Attorney profile pages</li>
+        <li>Consultation booking system</li>
+        <li>Local SEO + schema markup</li>
+        <li>3 rounds of revisions</li>
+      </ul>
+      <a href="../portfolio.html#contact" class="btn btn-accent" style="justify-content:center">Get Started</a>
+    </div>
+    <div class="price-card rv rv-d2">
+      <div class="price-tag">Multi-Attorney Firms</div>
+      <div class="price-name">Firm</div>
+      <div class="price-amt">From $2,499</div>
+      <ul class="price-list">
+        <li>Unlimited practice area pages</li>
+        <li>Unlimited attorney profiles</li>
+        <li>Blog / legal resources section</li>
+        <li>Advanced local SEO strategy</li>
+        <li>Priority support &amp; maintenance</li>
+      </ul>
+      <a href="../portfolio.html#contact" class="btn btn-ghost" style="justify-content:center">Get a Custom Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="wrap">
+  <div class="eyebrow rv" style="justify-content:center; display:flex">FAQ</div>
+  <h2 class="headline rv rv-d1" style="text-align:center; margin-bottom:48px">Common Questions From<br>Law Firms</h2>
+  <div class="faq-list">
+    <div class="faq-item rv">
+      <button class="faq-q" onclick="toggleFaq(this)">How much does a law firm website cost? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Pricing starts at $899 for a solo-practice site and scales based on the number of practice area pages, attorney profiles, and features like consultation booking or client intake forms. Most firms land in the $899–$2,499 range.</p></div>
+    </div>
+    <div class="faq-item rv rv-d1">
+      <button class="faq-q" onclick="toggleFaq(this)">How long does it take to build a law firm website? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Most law firm websites are delivered within 7–14 days, including discovery, design in Figma, development, content for practice area pages, and testing.</p></div>
+    </div>
+    <div class="faq-item rv rv-d2">
+      <button class="faq-q" onclick="toggleFaq(this)">Will my website be optimized for local SEO? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Yes. Every law firm website includes on-page SEO, location-targeted practice area pages, schema markup, and alignment with your Google Business Profile to help your firm rank for searches in your city.</p></div>
+    </div>
+    <div class="faq-item rv rv-d3">
+      <button class="faq-q" onclick="toggleFaq(this)">Can you write the legal content for my site? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Yes — content for practice area pages, attorney bios, and homepage copy is included in the Growth and Firm packages. You'll review and approve everything before it goes live.</p></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you offer ongoing maintenance after launch? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Yes — monthly maintenance plans cover security updates, backups, content edits, and performance monitoring so your site stays fast and secure long after launch.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <div class="cta-inner">
+    <div class="cta-orb"></div>
+    <div class="eyebrow rv" style="justify-content:center">Ready to Start?</div>
+    <h2 class="headline rv rv-d1" style="margin-bottom:18px">Get a Law Firm Website<br>Clients Actually Trust</h2>
+    <p class="rv rv-d2">Tell me about your firm and I'll reply with a free quote and a short walkthrough within 24 hours.</p>
+    <div class="cta-btns rv rv-d3">
+      <a href="../portfolio.html#contact" class="btn btn-accent">Get a Free Quote →</a>
+      <a href="https://wa.me/8801862611243" target="_blank" class="wa-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="nav-logo"><div class="logo-pip"></div>MoinUddin</div>
+      <p>Crafting premium websites for law firms, restaurants, and local businesses that refuse to blend in.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="law-firm-website-design.html">Law Firm Websites</a></li>
+        <li><a href="cleaning-service-website-design.html">Cleaning Service Sites</a></li>
+        <li><a href="gym-fitness-website-design.html">Gym &amp; Fitness Sites</a></li>
+        <li><a href="real-estate-website-design.html">Real Estate Sites</a></li>
+        <li><a href="restaurant-website-design.html">Restaurant Websites</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="../portfolio.html#about">About Me</a></li>
+        <li><a href="../portfolio.html#projects">Portfolio</a></li>
+        <li><a href="../portfolio.html#process">Process</a></li>
+        <li><a href="../portfolio.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hey.mainuddin@gmail.com">hey.mainuddin@gmail.com</a></li>
+        <li><a href="https://wa.me/8801862611243">WhatsApp Chat</a></li>
+        <li><a href="../portfolio.html#contact">Free Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2025 MoinUddin Design Studio · All rights reserved.</p>
+    <p>Made for businesses that want to grow · <a href="#">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 50), { passive: true });
+
+function toggleMenu() {
+  document.getElementById('ham').classList.toggle('x');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('ham').classList.remove('x');
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
