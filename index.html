@@ -265,6 +265,101 @@ body::after {
 }
 .nav-pill::after { display: none !important; }
 
+
+
+/* dropdown menu  */
+   .nav-services {
+  position: relative;
+}
+.nav-services > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-caret {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-right: 1.5px solid var(--dim2);
+  border-bottom: 1.5px solid var(--dim2);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .3s var(--ease), border-color .3s;
+}
+.nav-services:hover .nav-caret {
+  transform: rotate(225deg) translateY(2px);
+  border-color: var(--accent-b);
+}
+
+.services-dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 240px;
+  background: rgba(13,13,17,.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-md);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+}
+.services-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -6px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px; height: 12px;
+  background: rgba(13,13,17,.92);
+  border-left: 1px solid var(--border-hi);
+  border-top: 1px solid var(--border-hi);
+}
+.nav-services:hover .services-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.services-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  font-size: .8rem;
+  color: var(--dim2);
+  transition: background .25s, color .25s, padding-left .25s;
+}
+.services-dropdown a::after { display: none !important; }
+.services-dropdown a:hover {
+  background: var(--glow-s);
+  color: var(--white);
+  padding-left: 16px;
+}
+.services-dropdown .sd-ico {
+  width: 30px; height: 30px;
+  border-radius: var(--r-sm);
+  background: rgba(108,99,255,.1);
+  border: 1px solid rgba(108,99,255,.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; flex-shrink: 0;
+  transition: background .25s, transform .25s;
+}
+.services-dropdown a:hover .sd-ico {
+  background: var(--accent);
+  transform: scale(1.08);
+}
+.services-dropdown .sd-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 6px;
+}
+
 /* Hamburger */
 .ham {
   display: none; flex-direction: column; gap: 5px;
@@ -1610,13 +1705,39 @@ footer {
     </div>
     <span class="logo-name">Nexa<span class="logo-accent">Moin</span></span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Work</a></li>
-    <li><a href="#why">Why Me</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-  </ul>
+<ul class="nav-links">
+  <li><a href="#about">About</a></li>
+  <li class="nav-services">
+    <a href="#services">
+      Services
+      <span class="nav-caret"></span>
+    </a>
+    <div class="services-dropdown">
+      <a href="#services">
+        <span class="sd-ico">🍽️</span> Restaurant Websites
+      </a>
+      <a href="#services">
+        <span class="sd-ico">🏪</span> Small Business Sites
+      </a>
+      <a href="#services">
+        <span class="sd-ico">🛒</span> E-Commerce Stores
+      </a>
+      <div class="sd-divider"></div>
+      <a href="#services">
+        <span class="sd-ico">🔄</span> Website Redesign
+      </a>
+      <a href="#services">
+        <span class="sd-ico">📈</span> SEO & Performance
+      </a>
+      <a href="#services">
+        <span class="sd-ico">🛠️</span> Monthly Maintenance
+      </a>
+    </div>
+  </li>
+  <li><a href="#projects">Work</a></li>
+  <li><a href="#why">Why Me</a></li>
+  <li><a href="#testimonials">Reviews</a></li>
+</ul>
   <a href="#contact" class="nav-pill">Get a Quote</a>
   <div class="ham" id="ham" onclick="toggleMenu()">
     <span></span><span></span><span></span>
