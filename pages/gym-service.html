@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gym & Fitness Website Design — MoinUddin</title>
+<meta name="description" content="High-energy gym and fitness website design that drives memberships, class sign-ups, and Google rankings. Custom fitness sites from $599. Free quote in 24 hours.">
+<meta name="keywords" content="gym website design, fitness website designer, personal trainer website, CrossFit website, yoga studio website design">
+<link rel="canonical" href="https://moinuddin.dev/services/gym">
+<meta property="og:title" content="Gym & Fitness Website Design — MoinUddin">
+<meta property="og:description" content="Custom gym websites that sign up members online and rank on Google.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Gym & Fitness Website Design","provider":{"@type":"Person","name":"MoinUddin","email":"hey.mainuddin@gmail.com"},"description":"Custom gym and fitness website design that drives memberships and class sign-ups.","offers":{"@type":"Offer","price":"599","priceCurrency":"USD"}}</script>
+<style>
+:root{
+  --bg:#070709;--bg-alt:#0d0d11;--bg-card:#111116;
+  --border:rgba(255,255,255,0.07);--border-hi:rgba(255,255,255,0.13);
+  --white:#f5f5f7;--dim:rgba(245,245,247,0.42);--dim2:rgba(245,245,247,0.62);
+  --accent:#6c63ff;--accent-b:#867eff;--glow:rgba(108,99,255,0.22);--glow-s:rgba(108,99,255,0.10);
+  --green:#34d399;--orange:#f97316;--orange-s:rgba(249,115,22,0.1);--orange-glow:rgba(249,115,22,0.25);
+  --r-sm:12px;--r-md:18px;--r-lg:26px;--r-xl:36px;--nav-h:68px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--orange);color:#fff;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}button{font-family:inherit;border:none;cursor:pointer;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.028'/%3E%3C/svg%3E");opacity:.5;}
+#nav{position:fixed;top:0;inset-inline:0;height:var(--nav-h);display:flex;align-items:center;padding:0 clamp(24px,5vw,80px);z-index:600;transition:background .35s,border-color .35s;border-bottom:1px solid transparent;}
+#nav.stuck{background:rgba(7,7,9,.88);backdrop-filter:blur(24px);border-color:var(--border);}
+.nav-logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-.03em;display:flex;align-items:center;gap:10px;}
+.logo-pip{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none;margin:0 auto;}
+.nav-links a{font-size:.8rem;font-weight:400;color:var(--dim2);position:relative;transition:color .2s;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--orange);transition:width .3s var(--ease);}
+.nav-links a:hover{color:var(--white);}.nav-links a:hover::after{width:100%;}
+.nav-pill{background:var(--orange);color:#fff!important;font-weight:500!important;padding:9px 20px;border-radius:100px;font-size:.8rem!important;transition:background .2s,transform .2s;}
+.nav-pill:hover{background:#ea6b10;transform:translateY(-1px);}
+.wrap{padding-inline:clamp(24px,5vw,80px);}
+section{padding-block:clamp(80px,10vw,130px);}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);margin-bottom:18px;}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--orange);}
+.headline{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;line-height:.97;letter-spacing:-.04em;font-size:clamp(2.4rem,5.5vw,4.6rem);}
+.subline{font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--dim);line-height:1.8;max-width:500px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 32px;border-radius:100px;font-size:.88rem;font-weight:500;transition:transform .25s var(--ease),box-shadow .25s,background .2s;cursor:pointer;}
+.btn-orange{background:var(--orange);color:#fff;}
+.btn-orange:hover{background:#ea6b10;transform:translateY(-2px);box-shadow:0 14px 40px var(--orange-glow);}
+.btn-ghost{color:var(--dim2);border:1px solid var(--border-hi);}
+.btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,.28);transform:translateY(-2px);}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv-d1{transition-delay:.08s;}.rv-d2{transition-delay:.16s;}.rv-d3{transition-delay:.24s;}.rv-d4{transition-delay:.32s;}
+
+/* HERO */
+#hero{min-height:100svh;display:grid;place-items:center;padding-block:120px 80px;position:relative;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
+.orb-1{width:clamp(300px,55vw,700px);height:clamp(300px,55vw,700px);background:radial-gradient(circle,rgba(249,115,22,.18) 0%,transparent 70%);top:-10%;right:-10%;animation:orbFloat 8s ease-in-out infinite alternate;}
+.orb-2{width:clamp(200px,35vw,450px);height:clamp(200px,35vw,450px);background:radial-gradient(circle,rgba(108,99,255,.1) 0%,transparent 70%);bottom:5%;left:-8%;animation:orbFloat 10s ease-in-out infinite alternate-reverse;}
+@keyframes orbFloat{from{transform:translate(0,0) scale(1);}to{transform:translate(2%,3%) scale(1.06);}}
+.hero-dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 65% 65% at 50% 50%,black 30%,transparent 100%);}
+.hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding-inline:clamp(24px,5vw,80px);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:100px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.25);font-size:.75rem;color:var(--dim2);margin-bottom:36px;animation:heroFade .9s var(--ease) both;}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(1.35);}}
+.hero-h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(3rem,8vw,7.5rem);line-height:.92;letter-spacing:-.05em;margin-bottom:30px;animation:heroFade .9s .08s var(--ease) both;}
+.hero-h1 .grad{background:linear-gradient(130deg,var(--orange) 10%,#fdba74 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-p{font-size:clamp(.95rem,1.4vw,1.15rem);color:var(--dim);max-width:520px;line-height:1.78;margin-bottom:44px;animation:heroFade .9s .16s var(--ease) both;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;animation:heroFade .9s .24s var(--ease) both;}
+.hero-trust{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:56px;padding-top:40px;border-top:1px solid var(--border);animation:heroFade .9s .34s var(--ease) both;}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--dim);}.trust-ico{font-size:1.1rem;}.trust-item strong{color:var(--white);}
+@keyframes heroFade{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.scroll-nudge{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);z-index:2;animation:heroFade .9s .55s var(--ease) both;}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--orange),transparent);animation:scrollAnim 2.2s ease-in-out infinite;}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;}49%{transform:scaleY(1);transform-origin:top;}50%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}}
+
+/* FITNESS TYPES */
+#types{background:var(--bg-alt);}
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.type-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px 28px;transition:border-color .3s,transform .35s var(--ease);position:relative;overflow:hidden;}
+.type-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:0;transition:opacity .3s;}
+.type-card:hover{border-color:rgba(249,115,22,.3);transform:translateY(-4px);}.type-card:hover::before{opacity:1;}
+.type-ico{font-size:1.8rem;margin-bottom:16px;}
+.type-card h3{font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:700;margin-bottom:10px;}
+.type-card p{color:var(--dim);font-size:.86rem;line-height:1.72;}
+
+/* FEATURES */
+#features{background:var(--bg);}
+.feat-grid{display:grid;grid-template-columns:6fr 6fr;gap:clamp(40px,7vw,100px);align-items:start;max-width:1200px;margin:0 auto;}
+.feat-item{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--border);}
+.feat-item:first-child{padding-top:0;}.feat-item:last-child{border-bottom:none;}
+.feat-num{font-family:'Bricolage Grotesque',sans-serif;font-size:.7rem;font-weight:700;color:var(--orange);min-width:26px;padding-top:2px;flex-shrink:0;}
+.feat-item h3{font-family:'Bricolage Grotesque',sans-serif;font-size:.97rem;font-weight:700;margin-bottom:6px;}
+.feat-item p{color:var(--dim);font-size:.85rem;line-height:1.7;}
+
+/* Gym mock */
+.gym-mock{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;}
+.gm-bar{background:rgba(255,255,255,.04);padding:12px 16px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border);}
+.gm-dot{width:7px;height:7px;border-radius:50%;}
+.gm-url{flex:1;background:rgba(255,255,255,.06);border-radius:4px;height:14px;max-width:200px;margin-left:8px;}
+.gm-hero{background:linear-gradient(145deg,#100505 0%,#2a0e00 50%,#140800 100%);padding:28px 24px;position:relative;overflow:hidden;}
+.gm-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);}
+.gm-tagline{width:80%;height:10px;background:rgba(255,255,255,.7);border-radius:4px;margin-bottom:8px;}
+.gm-sub{width:55%;height:6px;background:rgba(255,255,255,.3);border-radius:3px;margin-bottom:20px;}
+.gm-btn-row{display:flex;gap:8px;}
+.gm-btn{height:26px;width:100px;background:var(--orange);border-radius:100px;}
+.gm-btn-g{height:26px;width:80px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:100px;}
+.gm-stats{display:flex;gap:0;border-top:1px solid var(--border);}
+.gm-stat{flex:1;padding:14px;text-align:center;border-right:1px solid var(--border);}
+.gm-stat:last-child{border-right:none;}
+.gm-stat-n{height:10px;background:rgba(249,115,22,.6);border-radius:3px;width:50%;margin:0 auto 5px;}
+.gm-stat-l{height:5px;background:rgba(255,255,255,.18);border-radius:2px;width:70%;margin:0 auto;}
+.gm-classes{padding:16px;display:flex;flex-direction:column;gap:8px;background:var(--bg-alt);}
+.gm-class{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;}
+.gm-class-l{display:flex;align-items:center;gap:8px;}
+.gm-class-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);}
+.gm-class-txt{display:flex;flex-direction:column;gap:4px;}
+.gm-class-name{height:6px;width:80px;background:rgba(255,255,255,.5);border-radius:2px;}
+.gm-class-time{height:4px;width:50px;background:rgba(255,255,255,.2);border-radius:2px;}
+.gm-class-btn{height:20px;width:50px;background:rgba(249,115,22,.3);border:1px solid rgba(249,115,22,.4);border-radius:100px;}
+
+/* PACKAGES */
+#packages{background:var(--bg-alt);}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pkg{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:38px 32px;position:relative;overflow:hidden;transition:border-color .3s,transform .35s var(--ease);}
+.pkg:hover{transform:translateY(-6px);}
+.pkg.featured{border-color:rgba(249,115,22,.4);background:linear-gradient(145deg,rgba(249,115,22,.06) 0%,var(--bg-card) 60%);}
+.pkg.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);}
+.pkg-badge{position:absolute;top:20px;right:20px;background:var(--orange);color:#fff;font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;}
+.pkg-name{font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px;}
+.pkg-price{font-family:'Bricolage Grotesque',sans-serif;font-size:2.6rem;font-weight:800;letter-spacing:-.05em;color:var(--orange);margin-bottom:6px;line-height:1;}
+.pkg-price sub{font-size:.8rem;font-weight:400;color:var(--dim);font-family:'DM Sans',sans-serif;vertical-align:baseline;}
+.pkg-desc{color:var(--dim);font-size:.84rem;line-height:1.65;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+.pkg-features li{display:flex;align-items:flex-start;gap:10px;font-size:.84rem;color:var(--dim2);}
+.pkg-features li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg);overflow:hidden;}
+.testi-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;cursor:grab;margin-top:52px;}
+.testi-scroll::-webkit-scrollbar{display:none;}
+.tc{min-width:360px;max-width:360px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;flex-shrink:0;transition:border-color .3s;}
+.tc:hover{border-color:rgba(249,115,22,.25);}
+.tc-stars{color:#fbbf24;font-size:.85rem;letter-spacing:2px;margin-bottom:16px;}
+.tc-quote{font-size:.92rem;color:var(--dim2);line-height:1.78;margin-bottom:24px;font-style:italic;}
+.tc-author{display:flex;align-items:center;gap:12px;}
+.tc-av{width:40px;height:40px;border-radius:50%;background:var(--orange-s);border:1px solid rgba(249,115,22,.25);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.8rem;color:var(--orange);flex-shrink:0;}
+.tc-name{font-family:'Bricolage Grotesque',sans-serif;font-size:.88rem;font-weight:700;}
+.tc-role{font-size:.73rem;color:var(--dim);}
+
+/* FAQ */
+#faq{background:var(--bg-alt);}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1000px;margin:0 auto;}
+.faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;transition:border-color .3s;}
+.faq-item:hover{border-color:var(--border-hi);}
+.faq-q{font-family:'Bricolage Grotesque',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+.faq-a{color:var(--dim);font-size:.85rem;line-height:1.72;}
+
+/* CTA */
+#cta-band{background:var(--bg);padding-block:clamp(80px,10vw,130px);}
+.cta-inner{max-width:860px;margin:0 auto;text-align:center;padding-inline:clamp(24px,5vw,80px);position:relative;}
+.cta-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(249,115,22,.1) 0%,transparent 70%);filter:blur(60px);pointer-events:none;}
+.cta-inner .headline{font-size:clamp(2.8rem,6vw,5rem);margin-bottom:22px;}
+.cta-inner p{color:var(--dim);font-size:1.05rem;line-height:1.75;max-width:520px;margin:0 auto 44px;}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+.wa-btn{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#fff;padding:15px 30px;border-radius:100px;font-size:.88rem;font-weight:500;transition:background .2s,transform .25s var(--ease);}
+.wa-btn:hover{background:#1db954;transform:translateY(-2px);}
+footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:40px clamp(24px,5vw,80px) 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.ft-left{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-.03em;display:flex;align-items:center;gap:8px;}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap;}.ft-links a{font-size:.8rem;color:var(--dim);transition:color .2s;}.ft-links a:hover{color:var(--white);}
+.ft-copy{font-size:.75rem;color:var(--dim);}
+.float-wa{position:fixed;bottom:28px;right:28px;width:54px;height:54px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;z-index:700;box-shadow:0 8px 32px rgba(37,211,102,.38);transition:transform .25s var(--ease);}
+.float-wa:hover{transform:scale(1.1) translateY(-2px);}
+.float-wa::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.55);animation:waRipple 2.4s ease-out infinite;}
+@keyframes waRipple{0%{transform:scale(1);opacity:1;}100%{transform:scale(2);opacity:0;}}
+@media(max-width:860px){.nav-links,.nav-pill{display:none;}.types-grid,.pkg-grid,.faq-grid{grid-template-columns:1fr;}.feat-grid{grid-template-columns:1fr;}.tc{min-width:290px;max-width:290px;}}
+@media(max-width:600px){section{padding-block:72px;}.hero-trust{flex-direction:column;align-items:flex-start;gap:14px;}.cta-btns{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+<a class="float-wa" href="https://wa.me/8801862611243" target="_blank" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<header id="nav">
+  <a href="index.html" class="nav-logo"><div class="logo-pip"></div>MoinUddin</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#projects">Work</a></li>
+    <li><a href="index.html#testimonials">Reviews</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-pill">Get a Quote</a>
+</header>
+
+<section id="hero">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="badge-dot"></div>Fitness Industry Specialist · 18+ Gyms & Studios Built</div>
+    <h1 class="hero-h1">Gym Sites That<br>Sign Up<br><span class="grad">Members</span></h1>
+    <p class="hero-p">Your gym deserves a website as powerful as your training. High-energy design, online membership sign-ups, class schedules, and local SEO that puts you ahead of the competition.</p>
+    <div class="hero-btns">
+      <a href="index.html#contact" class="btn btn-orange">Get a Free Quote <span>→</span></a>
+      <a href="#packages" class="btn btn-ghost">See Pricing <span>↓</span></a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-ico">🏋️</span><div><strong>18+ Gyms</strong><br>and fitness studios built</div></div>
+      <div class="trust-item"><span class="trust-ico">📆</span><div><strong>Class Scheduling</strong><br>built in as standard</div></div>
+      <div class="trust-item"><span class="trust-ico">💳</span><div><strong>Membership Sign-ups</strong><br>online, 24/7</div></div>
+      <div class="trust-item"><span class="trust-ico">⚡</span><div><strong>7–10 Days</strong><br>to launch</div></div>
+    </div>
+  </div>
+  <div class="scroll-nudge"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- FITNESS TYPES -->
+<section id="types" class="wrap">
+  <div style="max-width:600px;margin-bottom:52px;">
+    <div class="eyebrow rv">Who I Build For</div>
+    <h2 class="headline rv rv-d1">Every Type of Fitness<br>Business Gets a Custom Site</h2>
+  </div>
+  <div class="types-grid">
+    <div class="type-card rv"><div class="type-ico">🏋️</div><h3>Box & Weight Gyms</h3><p>Membership packages, personal training pages, facility photos, and online sign-up flows for traditional gyms and weightlifting facilities.</p></div>
+    <div class="type-card rv rv-d1"><div class="type-ico">🥊</div><h3>CrossFit & HIIT Studios</h3><p>Class schedules, WOD boards, coach bios, and drop-in booking for high-intensity training communities.</p></div>
+    <div class="type-card rv rv-d2"><div class="type-ico">🧘</div><h3>Yoga & Pilates Studios</h3><p>Calming, elegant design with class timetables, instructor profiles, and workshop booking for mind-body studios.</p></div>
+    <div class="type-card rv rv-d1"><div class="type-ico">🏃</div><h3>Personal Training</h3><p>One-to-one trainer sites with transformation galleries, program packages, and discovery call booking.</p></div>
+    <div class="type-card rv rv-d2"><div class="type-ico">🥋</div><h3>Martial Arts</h3><p>Belt-level programme pages, trial class booking, and parent-focused content for dojos, BJJ gyms, and MMA academies.</p></div>
+    <div class="type-card rv rv-d3"><div class="type-ico">🏊</div><h3>Swim & Multi-Sport</h3><p>Lane booking, squad programmes, and coach pages for swimming clubs, multisport facilities, and aquatic centres.</p></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="wrap">
+  <div class="feat-grid">
+    <div>
+      <div class="eyebrow rv">What's Included</div>
+      <h2 class="headline rv rv-d1" style="margin-bottom:14px">Built to Convert<br>Visitors into Members</h2>
+      <p class="subline rv rv-d2" style="margin-bottom:0">Every feature is chosen because it directly moves someone from curious visitor to paying member.</p>
+      <div style="margin-top:40px;display:flex;flex-direction:column;">
+        <div class="feat-item rv"><div class="feat-num">01</div><div><h3>Online Membership Sign-Up</h3><p>Visitors can choose a plan and sign up (or get notified) directly from your site. Integrates with your payment processor or CRM.</p></div></div>
+        <div class="feat-item rv rv-d1"><div class="feat-num">02</div><div><h3>Live Class Schedule</h3><p>Synced timetable where visitors see today's classes, book a spot, and get reminders — reducing no-shows and admin work.</p></div></div>
+        <div class="feat-item rv rv-d2"><div class="feat-num">03</div><div><h3>Trainer & Coach Profiles</h3><p>Showcasing your team with credentials, specialisms, and personalities builds the personal connection that converts lurkers into members.</p></div></div>
+        <div class="feat-item rv rv-d3"><div class="feat-num">04</div><div><h3>Transformation Gallery</h3><p>Before/after results and member success stories — with consent — are the single most powerful conversion tool for fitness businesses.</p></div></div>
+      </div>
+    </div>
+    <div class="gym-mock rv rv-d1">
+      <div class="gm-bar">
+        <div class="gm-dot" style="background:#ff5f57"></div>
+        <div class="gm-dot" style="background:#febc2e"></div>
+        <div class="gm-dot" style="background:#28c840"></div>
+        <div class="gm-url"></div>
+      </div>
+      <div class="gm-hero">
+        <div class="gm-tagline"></div>
+        <div class="gm-sub"></div>
+        <div class="gm-btn-row"><div class="gm-btn"></div><div class="gm-btn-g"></div></div>
+      </div>
+      <div class="gm-stats">
+        <div class="gm-stat"><div class="gm-stat-n"></div><div class="gm-stat-l"></div></div>
+        <div class="gm-stat"><div class="gm-stat-n"></div><div class="gm-stat-l"></div></div>
+        <div class="gm-stat"><div class="gm-stat-n"></div><div class="gm-stat-l"></div></div>
+      </div>
+      <div class="gm-classes">
+        <div class="gm-class"><div class="gm-class-l"><div class="gm-class-dot"></div><div class="gm-class-txt"><div class="gm-class-name"></div><div class="gm-class-time"></div></div></div><div class="gm-class-btn"></div></div>
+        <div class="gm-class"><div class="gm-class-l"><div class="gm-class-dot" style="background:var(--accent-b)"></div><div class="gm-class-txt"><div class="gm-class-name"></div><div class="gm-class-time"></div></div></div><div class="gm-class-btn" style="background:rgba(108,99,255,.3);border-color:rgba(108,99,255,.4)"></div></div>
+        <div class="gm-class"><div class="gm-class-l"><div class="gm-class-dot" style="background:#34d399"></div><div class="gm-class-txt"><div class="gm-class-name"></div><div class="gm-class-time"></div></div></div><div class="gm-class-btn" style="background:rgba(52,211,153,.3);border-color:rgba(52,211,153,.4)"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="wrap">
+  <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+    <div class="eyebrow rv" style="justify-content:center">Pricing</div>
+    <h2 class="headline rv rv-d1" style="margin-bottom:16px">Choose Your Package</h2>
+    <p class="subline rv rv-d2" style="margin:0 auto">All packages include mobile-first design, SSL, Google My Business setup, and 30 days post-launch support.</p>
+  </div>
+  <div class="pkg-grid">
+    <div class="pkg rv">
+      <div class="pkg-name">Lean Start</div>
+      <div class="pkg-price">$599<sub> one-time</sub></div>
+      <p class="pkg-desc">Get your gym online fast with a clean, professional site that captures leads and shows your class schedule.</p>
+      <ul class="pkg-features">
+        <li>Up to 6 pages</li>
+        <li>Class schedule section</li>
+        <li>Membership info pages</li>
+        <li>Contact & enquiry form</li>
+        <li>Mobile-first design</li>
+        <li>Basic on-page SEO</li>
+        <li>7-day delivery</li>
+      </ul>
+      <a href="index.html#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Get Started →</a>
+    </div>
+    <div class="pkg featured rv rv-d1">
+      <div class="pkg-badge">Most Popular</div>
+      <div class="pkg-name">Beast Mode</div>
+      <div class="pkg-price">$1,099<sub> one-time</sub></div>
+      <p class="pkg-desc">For growing gyms that want full online membership sign-ups, class booking, and local search dominance.</p>
+      <ul class="pkg-features">
+        <li>Up to 12 pages</li>
+        <li>Online membership sign-up</li>
+        <li>Live class booking integration</li>
+        <li>Trainer / coach profiles</li>
+        <li>Transformation gallery</li>
+        <li>Full local SEO setup</li>
+        <li>Pricing plan comparison</li>
+        <li>10-day delivery</li>
+      </ul>
+      <a href="index.html#contact" class="btn btn-orange" style="width:100%;justify-content:center">Get Started →</a>
+    </div>
+    <div class="pkg rv rv-d2">
+      <div class="pkg-name">Elite Facility</div>
+      <div class="pkg-price">$1,899<sub> one-time</sub></div>
+      <p class="pkg-desc">For premium gyms and multi-location facilities that want a full marketing machine and ongoing SEO growth.</p>
+      <ul class="pkg-features">
+        <li>Unlimited pages</li>
+        <li>Custom animations</li>
+        <li>Multi-location SEO</li>
+        <li>Member login portal link</li>
+        <li>Email marketing integration</li>
+        <li>Google Ads landing page</li>
+        <li>3 months SEO included</li>
+        <li>14-day delivery</li>
+      </ul>
+      <a href="index.html#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Get Started →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="wrap">
+  <div class="eyebrow rv">Reviews</div>
+  <h2 class="headline rv rv-d1">Gym Owners Who<br>Love the Results</h2>
+  <div class="testi-scroll" id="testiScroll">
+    <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-quote">"We added 47 new members in the first 6 weeks after launch. The online sign-up form removed every barrier. People were joining at 2am. It's wild."</p><div class="tc-author"><div class="tc-av">KP</div><div><div class="tc-name">Kevin Park</div><div class="tc-role">Owner, Iron Forge Gym</div></div></div></div>
+    <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-quote">"The class booking integration completely replaced our WhatsApp chaos. Clients book themselves in, get reminders, and no-shows dropped by 60%. Game changer."</p><div class="tc-author"><div class="tc-av">AJ</div><div><div class="tc-name">Alicia Jenkins</div><div class="tc-role">Founder, Elevate Yoga Studio</div></div></div></div>
+    <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-quote">"We rank #1 on Google for 'CrossFit [city]' now. The site looks incredible on phone — most of our new members found us that way. Absolutely worth it."</p><div class="tc-author"><div class="tc-av">BM</div><div><div class="tc-name">Ben Muller</div><div class="tc-role">Head Coach, CrossFit Apex</div></div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="wrap">
+  <div style="text-align:center;max-width:600px;margin:0 auto 52px;">
+    <div class="eyebrow rv" style="justify-content:center">FAQ</div>
+    <h2 class="headline rv rv-d1" style="font-size:clamp(2rem,4vw,3.5rem)">Common Questions</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item rv"><div class="faq-q">Can members sign up and pay through the site? <span>+</span></div><div class="faq-a">Yes. I can integrate Stripe, GoCardless, or your existing gym management software (Mindbody, Glofox, etc.) to handle payments and memberships directly.</div></div>
+    <div class="faq-item rv rv-d1"><div class="faq-q">How does the class schedule work? <span>+</span></div><div class="faq-a">It depends on your setup. I can embed a live schedule from your booking software (Mindbody, Acuity, Pike13), or build a simple static timetable you update yourself.</div></div>
+    <div class="faq-item rv rv-d2"><div class="faq-q">Can I update the site myself? <span>+</span></div><div class="faq-a">Yes. All WordPress and Webflow sites include a simple dashboard for everyday updates. I provide a walkthrough video so your team can make changes without any technical knowledge.</div></div>
+    <div class="faq-item rv rv-d3"><div class="faq-q">Will you help us rank on Google? <span>+</span></div><div class="faq-a">Every site includes on-page SEO, correct meta data, local schema, and Google Business Profile setup. Ranking timelines vary, but most clients see improvement within 30–60 days.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-band">
+  <div class="cta-inner">
+    <div class="cta-orb"></div>
+    <div class="eyebrow rv" style="justify-content:center">Ready to Grow?</div>
+    <h2 class="headline rv rv-d1" style="margin-bottom:20px">Let's Build Your<br><span style="background:linear-gradient(130deg,var(--orange),#fdba74);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Fitness Empire</span></h2>
+    <p class="rv rv-d2">Free quote in 24 hours. Your next 50 members are out there searching right now.</p>
+    <div class="cta-btns rv rv-d3">
+      <a href="index.html#contact" class="btn btn-orange">Get a Free Quote →</a>
+      <a href="https://wa.me/8801862611243" target="_blank" class="wa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-left"><div class="logo-pip"></div>MoinUddin · Gym & Fitness Web Design</div>
+  <div class="ft-links"><a href="index.html">Home</a><a href="law-firm.html">Law Firm</a><a href="cleaning-service.html">Cleaning</a><a href="real-estate.html">Real Estate</a><a href="restaurant.html">Restaurant</a><a href="index.html#contact">Contact</a></div>
+  <div class="ft-copy">© 2025 MoinUddin Design Studio</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>50),{passive:true});
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+const ts=document.getElementById('testiScroll');let d=false,sx,sl;
+ts.addEventListener('mousedown',e=>{d=true;sx=e.pageX-ts.offsetLeft;sl=ts.scrollLeft;});
+ts.addEventListener('mouseleave',()=>d=false);ts.addEventListener('mouseup',()=>d=false);
+ts.addEventListener('mousemove',e=>{if(!d)return;e.preventDefault();ts.scrollLeft=sl-(e.pageX-ts.offsetLeft-sx);});
+</script>
+</body>
+</html>
