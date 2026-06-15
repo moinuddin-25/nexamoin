@@ -1,1 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaning Service Website Design — MoinUddin Web Studio</title>
+<meta name="description" content="Professional cleaning company website design that books jobs online, ranks on Google, and builds trust. Starting from $499. Free quote in 24 hours.">
+<meta name="keywords" content="cleaning service website design, cleaning company website, house cleaning website, commercial cleaning website designer">
+<link rel="canonical" href="https://moinuddin.dev/services/cleaning-service">
+<meta property="og:title" content="Cleaning Service Website Design — MoinUddin">
+<meta property="og:description" content="Custom cleaning service websites that book more jobs and rank locally on Google.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Cleaning Service Website Design","provider":{"@type":"Person","name":"MoinUddin","email":"hey.mainuddin@gmail.com"},"description":"Custom cleaning company website design that books jobs and ranks on Google.","offers":{"@type":"Offer","price":"499","priceCurrency":"USD"}}</script>
+<style>
+:root {
+  --bg:#070709;--bg-alt:#0d0d11;--bg-card:#111116;
+  --border:rgba(255,255,255,0.07);--border-hi:rgba(255,255,255,0.13);
+  --white:#f5f5f7;--dim:rgba(245,245,247,0.42);--dim2:rgba(245,245,247,0.62);
+  --accent:#6c63ff;--accent-b:#867eff;--glow:rgba(108,99,255,0.22);--glow-s:rgba(108,99,255,0.10);
+  --green:#34d399;--cyan:#22d3ee;--cyan-s:rgba(34,211,238,0.10);--cyan-glow:rgba(34,211,238,0.2);
+  --r-sm:12px;--r-md:18px;--r-lg:26px;--r-xl:36px;--nav-h:68px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--accent);color:#fff;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:2px;}
+img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}button{font-family:inherit;border:none;cursor:pointer;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:900;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.028'/%3E%3C/svg%3E");opacity:.5;}
+#nav{position:fixed;top:0;inset-inline:0;height:var(--nav-h);display:flex;align-items:center;padding:0 clamp(24px,5vw,80px);z-index:600;transition:background .35s,border-color .35s;border-bottom:1px solid transparent;}
+#nav.stuck{background:rgba(7,7,9,.88);backdrop-filter:blur(24px);border-color:var(--border);}
+.nav-logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-.03em;display:flex;align-items:center;gap:10px;}
+.logo-pip{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none;margin:0 auto;}
+.nav-links a{font-size:.8rem;font-weight:400;color:var(--dim2);position:relative;transition:color .2s;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--cyan);transition:width .3s var(--ease);}
+.nav-links a:hover{color:var(--white);}.nav-links a:hover::after{width:100%;}
+.nav-pill{background:var(--accent);color:#fff!important;font-weight:500!important;padding:9px 20px;border-radius:100px;font-size:.8rem!important;transition:background .2s,transform .2s;}
+.nav-pill:hover{background:var(--accent-b);transform:translateY(-1px);}
+.wrap{padding-inline:clamp(24px,5vw,80px);}
+section{padding-block:clamp(80px,10vw,130px);}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);margin-bottom:18px;}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--cyan);}
+.headline{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;line-height:.97;letter-spacing:-.04em;font-size:clamp(2.4rem,5.5vw,4.6rem);}
+.subline{font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--dim);line-height:1.8;max-width:500px;}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 32px;border-radius:100px;font-size:.88rem;font-weight:500;transition:transform .25s var(--ease),box-shadow .25s,background .2s;cursor:pointer;}
+.btn-cyan{background:var(--cyan);color:#000;}
+.btn-cyan:hover{background:#38e8ff;transform:translateY(-2px);box-shadow:0 14px 40px var(--cyan-glow);}
+.btn-ghost{color:var(--dim2);border:1px solid var(--border-hi);}
+.btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,.28);transform:translateY(-2px);}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv-d1{transition-delay:.08s;}.rv-d2{transition-delay:.16s;}.rv-d3{transition-delay:.24s;}.rv-d4{transition-delay:.32s;}
 
+/* HERO */
+#hero{min-height:100svh;display:grid;place-items:center;padding-block:120px 80px;position:relative;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
+.orb-1{width:clamp(300px,55vw,700px);height:clamp(300px,55vw,700px);background:radial-gradient(circle,rgba(34,211,238,.14) 0%,transparent 70%);top:-10%;right:-10%;animation:orbFloat 8s ease-in-out infinite alternate;}
+.orb-2{width:clamp(200px,35vw,450px);height:clamp(200px,35vw,450px);background:radial-gradient(circle,rgba(108,99,255,.09) 0%,transparent 70%);bottom:5%;left:-8%;animation:orbFloat 10s ease-in-out infinite alternate-reverse;}
+@keyframes orbFloat{from{transform:translate(0,0) scale(1);}to{transform:translate(2%,3%) scale(1.06);}}
+.hero-dots{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 65% 65% at 50% 50%,black 30%,transparent 100%);}
+.hero-inner{position:relative;z-index:2;max-width:1100px;width:100%;padding-inline:clamp(24px,5vw,80px);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:100px;background:rgba(34,211,238,.07);border:1px solid rgba(34,211,238,.22);font-size:.75rem;color:var(--dim2);margin-bottom:36px;animation:heroFade .9s var(--ease) both;}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(1.35);}}
+.hero-h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(3rem,8vw,7.5rem);line-height:.92;letter-spacing:-.05em;margin-bottom:30px;animation:heroFade .9s .08s var(--ease) both;}
+.hero-h1 .grad{background:linear-gradient(130deg,var(--cyan) 10%,#a5f3fc 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-p{font-size:clamp(.95rem,1.4vw,1.15rem);color:var(--dim);max-width:520px;line-height:1.78;margin-bottom:44px;animation:heroFade .9s .16s var(--ease) both;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;animation:heroFade .9s .24s var(--ease) both;}
+.hero-trust{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:56px;padding-top:40px;border-top:1px solid var(--border);animation:heroFade .9s .34s var(--ease) both;}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--dim);}
+.trust-ico{font-size:1.1rem;}.trust-item strong{color:var(--white);}
+@keyframes heroFade{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.scroll-nudge{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);z-index:2;animation:heroFade .9s .55s var(--ease) both;}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--cyan),transparent);animation:scrollAnim 2.2s ease-in-out infinite;}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;}49%{transform:scaleY(1);transform-origin:top;}50%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}}
+
+/* SERVICES GRID */
+#services-grid{background:var(--bg-alt);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.svc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:34px 30px;position:relative;overflow:hidden;transition:border-color .3s,transform .35s var(--ease);}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s;}
+.svc-card:hover{border-color:rgba(34,211,238,.3);transform:translateY(-5px);}.svc-card:hover::before{opacity:1;}
+.svc-ico{width:50px;height:50px;border-radius:var(--r-sm);background:var(--cyan-s);border:1px solid rgba(34,211,238,.18);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:20px;}
+.svc-name{font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:10px;}
+.svc-desc{color:var(--dim);font-size:.86rem;line-height:1.72;}
+
+/* BEFORE/AFTER RESULTS */
+#results{background:var(--bg);}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,90px);align-items:center;max-width:1200px;margin:0 auto;}
+.result-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.rstat{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 24px;}
+.rstat-n{font-family:'Bricolage Grotesque',sans-serif;font-size:2.4rem;font-weight:800;letter-spacing:-.05em;color:var(--cyan);line-height:1;margin-bottom:6px;}
+.rstat-l{font-size:.78rem;color:var(--dim);line-height:1.5;}
+.result-points{display:flex;flex-direction:column;gap:0;}
+.rp{display:flex;gap:18px;padding:24px 0;border-bottom:1px solid var(--border);}
+.rp:first-child{padding-top:0;}.rp:last-child{border-bottom:none;}
+.rp-check{color:var(--cyan);font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.rp h3{font-family:'Bricolage Grotesque',sans-serif;font-size:.97rem;font-weight:700;margin-bottom:5px;}
+.rp p{color:var(--dim);font-size:.85rem;line-height:1.7;}
+
+/* PACKAGES */
+#packages{background:var(--bg-alt);}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pkg{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:38px 32px;position:relative;overflow:hidden;transition:border-color .3s,transform .35s var(--ease);}
+.pkg:hover{transform:translateY(-6px);}
+.pkg.featured{border-color:rgba(34,211,238,.4);background:linear-gradient(145deg,rgba(34,211,238,.05) 0%,var(--bg-card) 60%);}
+.pkg.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
+.pkg-badge{position:absolute;top:20px;right:20px;background:var(--cyan);color:#000;font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;}
+.pkg-name{font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:8px;}
+.pkg-price{font-family:'Bricolage Grotesque',sans-serif;font-size:2.6rem;font-weight:800;letter-spacing:-.05em;color:var(--cyan);margin-bottom:6px;line-height:1;}
+.pkg-price sub{font-size:.8rem;font-weight:400;color:var(--dim);font-family:'DM Sans',sans-serif;vertical-align:baseline;}
+.pkg-desc{color:var(--dim);font-size:.84rem;line-height:1.65;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+.pkg-features li{display:flex;align-items:flex-start;gap:10px;font-size:.84rem;color:var(--dim2);}
+.pkg-features li::before{content:'✓';color:var(--cyan);font-weight:700;flex-shrink:0;}
+
+/* BOOKING SECTION */
+#booking{background:var(--bg);}
+.booking-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(40px,6vw,80px);align-items:start;max-width:1200px;margin:0 auto;}
+.booking-info p{color:var(--dim);font-size:.95rem;line-height:1.82;margin-bottom:24px;}
+.booking-perks{display:flex;flex-direction:column;gap:14px;margin-top:32px;}
+.perk{display:flex;align-items:center;gap:12px;font-size:.88rem;color:var(--dim2);}
+.perk-ico{width:36px;height:36px;background:var(--cyan-s);border:1px solid rgba(34,211,238,.2);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;}
+.bform{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl);padding:clamp(28px,4vw,44px);}
+.fg{display:flex;flex-direction:column;gap:7px;}
+.fg label{font-size:.76rem;font-weight:500;color:var(--dim2);letter-spacing:.03em;}
+.fg input,.fg textarea,.fg select{background:rgba(255,255,255,.04);border:1px solid var(--border-hi);border-radius:var(--r-sm);padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s,background .2s;width:100%;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22);}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--cyan);background:rgba(34,211,238,.05);}
+.fg select option{background:#111116;}
+.fg textarea{resize:vertical;min-height:100px;}
+.form-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-stack{display:flex;flex-direction:column;gap:16px;margin-bottom:22px;}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--bg-alt);overflow:hidden;}
+.testi-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;cursor:grab;margin-top:52px;}
+.testi-scroll::-webkit-scrollbar{display:none;}
+.tc{min-width:360px;max-width:360px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;flex-shrink:0;transition:border-color .3s;}
+.tc:hover{border-color:rgba(34,211,238,.25);}
+.tc-stars{color:#fbbf24;font-size:.85rem;letter-spacing:2px;margin-bottom:16px;}
+.tc-quote{font-size:.92rem;color:var(--dim2);line-height:1.78;margin-bottom:24px;font-style:italic;}
+.tc-author{display:flex;align-items:center;gap:12px;}
+.tc-av{width:40px;height:40px;border-radius:50%;background:var(--cyan-s);border:1px solid rgba(34,211,238,.25);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.8rem;color:var(--cyan);flex-shrink:0;}
+.tc-name{font-family:'Bricolage Grotesque',sans-serif;font-size:.88rem;font-weight:700;}
+.tc-role{font-size:.73rem;color:var(--dim);}
+
+/* FAQ */
+#faq{background:var(--bg);}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1000px;margin:0 auto;}
+.faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;transition:border-color .3s;}
+.faq-item:hover{border-color:var(--border-hi);}
+.faq-q{font-family:'Bricolage Grotesque',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+.faq-a{color:var(--dim);font-size:.85rem;line-height:1.72;}
+
+/* CTA */
+#cta-band{background:var(--bg-alt);padding-block:clamp(80px,10vw,130px);}
+.cta-inner{max-width:860px;margin:0 auto;text-align:center;padding-inline:clamp(24px,5vw,80px);position:relative;}
+.cta-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(34,211,238,.1) 0%,transparent 70%);filter:blur(60px);pointer-events:none;}
+.cta-inner .headline{font-size:clamp(2.8rem,6vw,5rem);margin-bottom:22px;}
+.cta-inner p{color:var(--dim);font-size:1.05rem;line-height:1.75;max-width:520px;margin:0 auto 44px;}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+.wa-btn{display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#fff;padding:15px 30px;border-radius:100px;font-size:.88rem;font-weight:500;transition:background .2s,transform .25s var(--ease);}
+.wa-btn:hover{background:#1db954;transform:translateY(-2px);}
+
+footer{background:var(--bg);border-top:1px solid var(--border);padding:40px clamp(24px,5vw,80px) 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.ft-left{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-.03em;display:flex;align-items:center;gap:8px;}
+.ft-links{display:flex;gap:24px;flex-wrap:wrap;}.ft-links a{font-size:.8rem;color:var(--dim);transition:color .2s;}.ft-links a:hover{color:var(--white);}
+.ft-copy{font-size:.75rem;color:var(--dim);}
+.float-wa{position:fixed;bottom:28px;right:28px;width:54px;height:54px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;z-index:700;box-shadow:0 8px 32px rgba(37,211,102,.38);transition:transform .25s var(--ease);}
+.float-wa:hover{transform:scale(1.1) translateY(-2px);}
+.float-wa::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(37,211,102,.55);animation:waRipple 2.4s ease-out infinite;}
+@keyframes waRipple{0%{transform:scale(1);opacity:1;}100%{transform:scale(2);opacity:0;}}
+@media(max-width:860px){.nav-links,.nav-pill{display:none;}.svc-grid,.pkg-grid,.faq-grid{grid-template-columns:1fr;}.results-grid,.booking-grid{grid-template-columns:1fr;}.result-stats{grid-template-columns:1fr 1fr;}.tc{min-width:290px;max-width:290px;}}
+@media(max-width:600px){section{padding-block:72px;}.hero-trust{flex-direction:column;align-items:flex-start;gap:14px;}.cta-btns{flex-direction:column;align-items:center;}.form-two{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<a class="float-wa" href="https://wa.me/8801862611243" target="_blank" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<header id="nav">
+  <a href="index.html" class="nav-logo"><div class="logo-pip"></div>MoinUddin</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#projects">Work</a></li>
+    <li><a href="index.html#testimonials">Reviews</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-pill">Get a Quote</a>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="badge-dot"></div>Cleaning Industry Specialist · 15+ Sites Built</div>
+    <h1 class="hero-h1">Cleaning Sites That<br>Fill Your<br><span class="grad">Schedule</span></h1>
+    <p class="hero-p">A professional website is your best salesperson — working 24/7 to book new residential and commercial cleaning jobs while you focus on the work.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn btn-cyan">Get a Free Quote <span>→</span></a>
+      <a href="#packages" class="btn btn-ghost">View Pricing <span>↓</span></a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-ico">🧹</span><div><strong>15+ Cleaning Co.</strong><br>websites delivered</div></div>
+      <div class="trust-item"><span class="trust-ico">📱</span><div><strong>Online Booking</strong><br>built in as standard</div></div>
+      <div class="trust-item"><span class="trust-ico">🗺️</span><div><strong>Local SEO</strong><br>rank in your service area</div></div>
+      <div class="trust-item"><span class="trust-ico">⚡</span><div><strong>7-Day Delivery</strong><br>start taking bookings fast</div></div>
+    </div>
+  </div>
+  <div class="scroll-nudge"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- SERVICES OFFERED -->
+<section id="services-grid" class="wrap">
+  <div style="max-width:600px;margin-bottom:52px;">
+    <div class="eyebrow rv">What I Build</div>
+    <h2 class="headline rv rv-d1">Every Cleaning Business<br>Gets a Custom Site</h2>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card rv"><div class="svc-ico">🏠</div><div class="svc-name">Residential Cleaning</div><p class="svc-desc">Showcase your home cleaning packages, pricing, and availability. Make it effortless for homeowners to book recurring cleans online.</p></div>
+    <div class="svc-card rv rv-d1"><div class="svc-ico">🏢</div><div class="svc-name">Commercial Cleaning</div><p class="svc-desc">Professional pages for office, retail, and industrial cleaning with B2B inquiry forms and trust-building certifications display.</p></div>
+    <div class="svc-card rv rv-d2"><div class="svc-ico">✨</div><div class="svc-name">Deep Cleaning</div><p class="svc-desc">Dedicated landing pages for move-in/out cleans, post-construction, and seasonal deep cleans — capturing high-value one-time jobs.</p></div>
+    <div class="svc-card rv rv-d1"><div class="svc-ico">🌿</div><div class="svc-name">Eco-Friendly Services</div><p class="svc-desc">Green cleaning credentials front and center. Attract customers who specifically seek environmentally responsible service providers.</p></div>
+    <div class="svc-card rv rv-d2"><div class="svc-ico">🪟</div><div class="svc-name">Speciality Cleaning</div><p class="svc-desc">Window cleaning, carpet cleaning, pressure washing — each service gets its own SEO page targeting the right local keywords.</p></div>
+    <div class="svc-card rv rv-d3"><div class="svc-ico">📅</div><div class="svc-name">Recurring Plans</div><p class="svc-desc">Subscription plan pages with weekly/bi-weekly/monthly options and automated quote calculators to convert browsers into loyal clients.</p></div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="wrap">
+  <div class="results-grid">
+    <div>
+      <div class="eyebrow rv">Proven Results</div>
+      <h2 class="headline rv rv-d1" style="margin-bottom:14px">What Happens After<br>Your Site Launches</h2>
+      <p class="subline rv rv-d2" style="margin-bottom:0">Real outcomes from cleaning businesses I've built sites for.</p>
+      <div class="result-points" style="margin-top:40px">
+        <div class="rp rv"><div class="rp-check">✓</div><div><h3>More Leads From Google</h3><p>Local SEO setup means you appear in "cleaning service [city]" searches. Most clients see first-page results within 60 days.</p></div></div>
+        <div class="rp rv rv-d1"><div class="rp-check">✓</div><div><h3>Online Booking = Less Phone Time</h3><p>An integrated booking form or calendar link lets customers book at midnight without calling you. Your schedule fills automatically.</p></div></div>
+        <div class="rp rv rv-d2"><div class="rp-check">✓</div><div><h3>Higher Average Job Value</h3><p>Presenting service packages clearly online encourages upsells. Customers choose premium tiers when they can compare options easily.</p></div></div>
+        <div class="rp rv rv-d3"><div class="rp-check">✓</div><div><h3>Instant Credibility Boost</h3><p>Reviews, before/after photos, and certifications presented professionally make you the obvious choice over competitors.</p></div></div>
+      </div>
+    </div>
+    <div class="result-stats" style="align-content:center;gap:16px;">
+      <div class="rstat rv"><div class="rstat-n">2.5×</div><div class="rstat-l">avg. increase in monthly bookings within 90 days</div></div>
+      <div class="rstat rv rv-d1"><div class="rstat-n">78%</div><div class="rstat-l">of customers research cleaning companies on Google before calling</div></div>
+      <div class="rstat rv rv-d2"><div class="rstat-n">90+</div><div class="rstat-l">PageSpeed score — fast sites rank higher and convert better</div></div>
+      <div class="rstat rv rv-d3"><div class="rstat-n">24/7</div><div class="rstat-l">your site books jobs even while you're cleaning</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="wrap">
+  <div style="text-align:center;max-width:600px;margin:0 auto 56px;">
+    <div class="eyebrow rv" style="justify-content:center">Pricing</div>
+    <h2 class="headline rv rv-d1" style="margin-bottom:16px">Simple, Clear Pricing</h2>
+    <p class="subline rv rv-d2" style="margin:0 auto">Every package includes mobile-first design, SSL, Google My Business setup, and 30 days post-launch support.</p>
+  </div>
+  <div class="pkg-grid">
+    <div class="pkg rv">
+      <div class="pkg-name">Sparkle Starter</div>
+      <div class="pkg-price">$499<sub> one-time</sub></div>
+      <p class="pkg-desc">Get a professional site up fast. Perfect for solo cleaners and new cleaning companies.</p>
+      <ul class="pkg-features">
+        <li>Up to 5 pages</li>
+        <li>Service descriptions</li>
+        <li>Quote request form</li>
+        <li>Google Maps + reviews</li>
+        <li>Mobile-first design</li>
+        <li>Basic local SEO</li>
+        <li>7-day delivery</li>
+      </ul>
+      <a href="#booking" class="btn btn-ghost" style="width:100%;justify-content:center">Get Started →</a>
+    </div>
+    <div class="pkg featured rv rv-d1">
+      <div class="pkg-badge">Most Popular</div>
+      <div class="pkg-name">Pro Cleaner</div>
+      <div class="pkg-price">$849<sub> one-time</sub></div>
+      <p class="pkg-desc">For growing cleaning businesses that want to dominate local search and book online.</p>
+      <ul class="pkg-features">
+        <li>Up to 10 pages</li>
+        <li>Online booking integration</li>
+        <li>Service area pages (3 cities)</li>
+        <li>Before/after gallery</li>
+        <li>Pricing calculator</li>
+        <li>Full local SEO setup</li>
+        <li>Google Business Profile</li>
+        <li>10-day delivery</li>
+      </ul>
+      <a href="#booking" class="btn btn-cyan" style="width:100%;justify-content:center">Get Started →</a>
+    </div>
+    <div class="pkg rv rv-d2">
+      <div class="pkg-name">Enterprise Clean</div>
+      <div class="pkg-price">$1,499<sub> one-time</sub></div>
+      <p class="pkg-desc">For multi-service or franchise cleaning companies targeting multiple cities and markets.</p>
+      <ul class="pkg-features">
+        <li>Unlimited pages</li>
+        <li>Multi-city SEO targeting</li>
+        <li>Staff / team pages</li>
+        <li>Customer portal link</li>
+        <li>Email marketing integration</li>
+        <li>Monthly reporting dashboard</li>
+        <li>Ongoing SEO included (3 months)</li>
+        <li>14-day delivery</li>
+      </ul>
+      <a href="#booking" class="btn btn-ghost" style="width:100%;justify-content:center">Get Started →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING / CONTACT -->
+<section id="booking" class="wrap">
+  <div class="booking-grid">
+    <div class="booking-info">
+      <div class="eyebrow rv">Get In Touch</div>
+      <h2 class="headline rv rv-d1" style="font-size:clamp(2rem,4vw,3.4rem);margin-bottom:20px">Let's Build Your<br>Cleaning Site</h2>
+      <p class="rv rv-d2">Tell me about your cleaning business and I'll send a free, no-obligation quote within 24 hours with a clear plan for your website.</p>
+      <div class="booking-perks rv rv-d2">
+        <div class="perk"><div class="perk-ico">✉️</div>hey.mainuddin@gmail.com</div>
+        <div class="perk"><div class="perk-ico">💬</div>WhatsApp: +8801862611243</div>
+        <div class="perk"><div class="perk-ico">⏱️</div>Reply within 4 hours</div>
+        <div class="perk"><div class="perk-ico">🌍</div>Remote — Serve Worldwide</div>
+      </div>
+    </div>
+    <div class="bform rv rv-d1">
+      <div class="form-stack">
+        <div class="form-two">
+          <div class="fg"><label>Your Name *</label><input type="text" placeholder="Jane Smith"></div>
+          <div class="fg"><label>Email *</label><input type="email" placeholder="jane@cleaningco.com"></div>
+        </div>
+        <div class="fg"><label>Business Name</label><input type="text" placeholder="Sparkling Clean Co."></div>
+        <div class="fg"><label>Service Type</label>
+          <select><option value="">Type of cleaning business</option><option>Residential Cleaning</option><option>Commercial Cleaning</option><option>Both Residential & Commercial</option><option>Speciality Cleaning</option><option>Other</option></select>
+        </div>
+        <div class="fg"><label>Package Interest</label>
+          <select><option value="">Which package suits you?</option><option>Sparkle Starter ($499)</option><option>Pro Cleaner ($849)</option><option>Enterprise Clean ($1,499)</option><option>Not sure — need advice</option></select>
+        </div>
+        <div class="fg"><label>Tell Me About Your Business *</label><textarea placeholder="Your service area, current challenges, website goals, timeline..."></textarea></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+        <button class="btn btn-cyan" onclick="this.textContent='✓ Sent! I\'ll reply soon.';this.style.background='#059669';this.style.color='#fff'">Send Message <span>→</span></button>
+        <span style="font-size:.78rem;color:var(--dim)">Free quote · No obligation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="wrap">
+  <div class="eyebrow rv">Reviews</div>
+  <h2 class="headline rv rv-d1">What Cleaning Business<br>Owners Say</h2>
+  <div class="testi-scroll" id="testiScroll">
+    <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-quote">"Bookings went from 12 to 31 jobs a month within 8 weeks of launch. The online booking form alone changed our business — no more chasing quotes by phone."</p><div class="tc-author"><div class="tc-av">CW</div><div><div class="tc-name">Claire Walsh</div><div class="tc-role">Owner, Walsh Home Cleaning</div></div></div></div>
+    <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-quote">"We showed up on Google Maps for the first time! Within a month we were getting 5–8 new leads a week just from local search. Worth every cent."</p><div class="tc-author"><div class="tc-av">MT</div><div><div class="tc-name">Marcus Thompson</div><div class="tc-role">Director, ClearView Commercial Cleaning</div></div></div></div>
+    <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-quote">"Clean design (pun intended), fast site, and clients constantly tell me it looks trustworthy and professional. My old Wix site was embarrassing. This is night and day."</p><div class="tc-author"><div class="tc-av">LB</div><div><div class="tc-name">Linda Barros</div><div class="tc-role">Founder, EcoShine Cleaning</div></div></div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="wrap">
+  <div style="text-align:center;max-width:600px;margin:0 auto 52px;">
+    <div class="eyebrow rv" style="justify-content:center">FAQ</div>
+    <h2 class="headline rv rv-d1" style="font-size:clamp(2rem,4vw,3.5rem)">Frequently Asked</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item rv"><div class="faq-q">Can I take bookings directly from the site? <span>+</span></div><div class="faq-a">Yes. I can integrate a booking calendar (like Calendly or Acuity), a custom form, or a quote calculator — whatever fits your workflow. Some integrations have a small monthly cost.</div></div>
+    <div class="faq-item rv rv-d1"><div class="faq-q">How do I show up in local Google searches? <span>+</span></div><div class="faq-a">I set up your Google Business Profile, add location schema markup, create service-area pages, and optimise your titles and meta descriptions for local keywords.</div></div>
+    <div class="faq-item rv rv-d2"><div class="faq-q">Do you do before/after photo galleries? <span>+</span></div><div class="faq-a">Absolutely — they're one of the best conversion tools for cleaning companies. I'll design a polished before/after gallery. You just supply the photos.</div></div>
+    <div class="faq-item rv rv-d3"><div class="faq-q">What platform will my site be built on? <span>+</span></div><div class="faq-a">Typically WordPress for full flexibility and easy self-editing. For smaller budgets I also build on Webflow. I'll recommend the best fit for your needs.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-band">
+  <div class="cta-inner">
+    <div class="cta-orb"></div>
+    <div class="eyebrow rv" style="justify-content:center">Ready to Grow?</div>
+    <h2 class="headline rv rv-d1" style="margin-bottom:20px">Let's Fill Your<br><span style="background:linear-gradient(130deg,var(--cyan),#a5f3fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Calendar</span></h2>
+    <p class="rv rv-d2">Free quote within 24 hours. No obligation, no fluff.</p>
+    <div class="cta-btns rv rv-d3">
+      <a href="#booking" class="btn btn-cyan">Get a Free Quote →</a>
+      <a href="https://wa.me/8801862611243" target="_blank" class="wa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-left"><div class="logo-pip"></div>MoinUddin · Cleaning Service Web Design</div>
+  <div class="ft-links"><a href="index.html">Home</a><a href="law-firm.html">Law Firm</a><a href="gym.html">Gym</a><a href="real-estate.html">Real Estate</a><a href="restaurant.html">Restaurant</a><a href="index.html#contact">Contact</a></div>
+  <div class="ft-copy">© 2025 MoinUddin Design Studio</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>50),{passive:true});
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+const ts=document.getElementById('testiScroll');let d=false,sx,sl;
+ts.addEventListener('mousedown',e=>{d=true;sx=e.pageX-ts.offsetLeft;sl=ts.scrollLeft;});
+ts.addEventListener('mouseleave',()=>d=false);ts.addEventListener('mouseup',()=>d=false);
+ts.addEventListener('mousemove',e=>{if(!d)return;e.preventDefault();ts.scrollLeft=sl-(e.pageX-ts.offsetLeft-sx);});
+</script>
+</body>
+</html>
